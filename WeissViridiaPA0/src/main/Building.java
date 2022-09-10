@@ -1,3 +1,14 @@
+/**
+* Building object.
+* Known Bugs: None
+*
+* @author Viridia Weiss
+* gweiss@brandeis.edu 
+* Sep 10, 2022
+* COSI 21A PA0 
+*/
+
+
 package main;
 
 import java.util.ArrayList;

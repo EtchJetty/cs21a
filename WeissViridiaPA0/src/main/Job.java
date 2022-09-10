@@ -1,7 +1,17 @@
+/**
+* Job class that stores a caller and the destination.
+* Known Bugs: None
+*
+* @author Viridia Weiss
+* gweiss@brandeis.edu 
+* Sep 10, 2022
+* COSI 21A PA0 
+*/
+
 package main;
 
 /**
- * This class is used to represent an e;evator trip. This class holds a
+ * This class is used to represent an elevator trip. This class holds a
  * reference to
  * a Person and a floor number. You can use a null object for the first
  * parameter

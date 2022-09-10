@@ -1,3 +1,13 @@
+/**
+* Simulation class that handles examples from LATTE, as well as random generation.
+* Known Bugs: Random generation sometimes creates out of bounds errors
+*
+* @author Viridia Weiss
+* gweiss@brandeis.edu 
+* Sep 10, 2022
+* COSI 21A PA0 
+*/
+
 package main;
 
 import java.io.File;
@@ -10,10 +20,10 @@ import java.util.Scanner;
  * This class should contain a main method, where you simulate the
  * building. You should instantiate a building, and several person instances.
  * Then you should simulate two different groups of people, arriving at
- * different times, and requesting to use the drone. One of the groups should be
- * larger than the capacity of what the drone can handle in one batch. Print the
- * state of the building/drone/people’s locations in order to show what is going
- * on in the building as the drone operates. This is so the user can tell what
+ * different times, and requesting to use the elevator. One of the groups should be
+ * larger than the capacity of what the elevator can handle in one batch. Print the
+ * state of the building/elevator/people’s locations in order to show what is going
+ * on in the building as the elevator operates. This is so the user can tell what
  * is going on.
  */
 public class Simulation {

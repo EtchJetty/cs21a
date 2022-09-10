@@ -1,3 +1,13 @@
+/**
+* Person class that stores basic information.
+* Known Bugs: None
+*
+* @author Viridia Weiss
+* gweiss@brandeis.edu 
+* Sep 10, 2022
+* COSI 21A PA0 
+*/
+
 package main;
 
 public class Person {

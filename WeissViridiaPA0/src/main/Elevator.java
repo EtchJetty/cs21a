@@ -1,3 +1,13 @@
+/**
+* Elevator object. Contains most of the processing code.
+* Known Bugs: None
+*
+* @author Viridia Weiss
+* gweiss@brandeis.edu 
+* Sep 10, 2022
+* COSI 21A PA0 
+*/
+
 package main;
 
 import java.util.ArrayList;
@@ -7,7 +17,7 @@ public class Elevator {
 	 * A list of Jobs (as an array), where each Job
 	 * represents a person and the floor to which they desire to go.
 	 */
-	ArrayList<Job> jobs = new ArrayList<Job>();
+	private ArrayList<Job> jobs = new ArrayList<Job>();
 
 	/**
 	 * The number corresponding to the current location the elevator is at.
@@ -35,6 +45,16 @@ public class Elevator {
 		this.location = 0;
 	}
 
+	/** Getter and setter. */
+	public ArrayList<Job> getJobs() {
+		return jobs;
+	}
+
+	/** Getter and setter. */
+	public void setJobs(ArrayList<Job> jobs) {
+		this.jobs = jobs;
+	}
+
 	/**
 	 * This method should simply add, in the right place, a new job to be completed
 	 * by the elevator.
@@ -44,7 +64,7 @@ public class Elevator {
 	 * @return will be true
 	 */
 	public boolean createJob(Person person, int floor) {
-		return jobs.add(new Job(person, floor));
+		return getJobs().add(new Job(person, floor));
 	}
 
 	/**
@@ -55,9 +75,9 @@ public class Elevator {
 	public void processAllJobs() {
 		// cleanUpJobs();
 		createJob(null, 0);
-		for (int i = 0; i < jobs.size(); i++) {
-			processJob(jobs.get(i));
-			jobs.remove(jobs.get(i));
+		for (int i = 0; i < getJobs().size(); i++) {
+			processJob(getJobs().get(i));
+			getJobs().remove(getJobs().get(i));
 			--i;
 		}
 	}
@@ -139,7 +159,7 @@ public class Elevator {
 	}
 
 	public String toString() {
-		return ("Elevator with a max of " + maxOccupants + " occupants, at floor " + this.location + ".");
+		return ("Elevator with a max of " + maxOccupants + " occupants, with " + jobs.size() + " passengers.");
 	}
 
 }
