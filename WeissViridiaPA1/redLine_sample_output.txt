@@ -1,0 +1,700 @@
+INITIATED RED LINE
+
+Station: Alewife
+1 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+1 south-bound passengers waiting
+
+Station: Davis
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+3 south-bound passengers waiting
+
+Station: Porter
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+1 south-bound passengers waiting
+
+Station: Harvard
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: Central
+0 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: Kendall/MIT
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: Charles/MGH
+1 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+1 south-bound passengers waiting
+
+Station: Park Street
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: Downtown Crossing
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: South Station
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: Broadway
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: Andrew
+0 north-bound trains waiting
+0 south-bound trains waiting
+1 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: JFK/UMass
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: North Quincy
+1 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: Wollaston
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+1 south-bound passengers waiting
+
+Station: Quincy Center
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: Quincy Adams
+0 north-bound trains waiting
+0 south-bound trains waiting
+1 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: Braintree
+0 north-bound trains waiting
+0 south-bound trains waiting
+1 north-bound passengers waiting
+0 south-bound passengers waiting
+
+BEGINNING RED LINE SIMULATION
+
+ ------ 1 ------ 
+
+Station: Alewife
+1 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+1 south-bound passengers waiting
+
+Station: Davis
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+3 south-bound passengers waiting
+
+Station: Porter
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+1 south-bound passengers waiting
+
+Station: Harvard
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: Central
+0 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Kendall/MIT Disembarking Passengers: 
+Direction: Southbound
+Passengers: 
+Current station: Kendall/MIT
+
+Station: Kendall/MIT
+0 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Charles/MGH Disembarking Passengers: 
+Direction: Southbound
+Passengers: 
+Current station: Charles/MGH
+
+Station: Charles/MGH
+1 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+1 south-bound passengers waiting
+
+Kendall/MIT Disembarking Passengers: 
+Direction: Northbound
+Passengers: 
+Current station: Kendall/MIT
+
+Park Street Disembarking Passengers: 
+Direction: Southbound
+Passengers: 
+R4MHFOAJAQQJ56T96FPO, Quincy Adams
+Current station: Park Street
+
+Station: Park Street
+0 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Downtown Crossing Disembarking Passengers: 
+Direction: Southbound
+Passengers: 
+R4MHFOAJAQQJ56T96FPO, Quincy Adams
+Current station: Downtown Crossing
+
+Station: Downtown Crossing
+0 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+South Station Disembarking Passengers: 
+Direction: Southbound
+Passengers: 
+R4MHFOAJAQQJ56T96FPO, Quincy Adams
+Current station: South Station
+
+Station: South Station
+0 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Broadway Disembarking Passengers: 
+Direction: Southbound
+Passengers: 
+R4MHFOAJAQQJ56T96FPO, Quincy Adams
+Current station: Broadway
+
+Station: Broadway
+0 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Andrew Disembarking Passengers: 
+Direction: Southbound
+Passengers: 
+R4MHFOAJAQQJ56T96FPO, Quincy Adams
+Current station: Andrew
+
+Station: Andrew
+0 north-bound trains waiting
+1 south-bound trains waiting
+1 north-bound passengers waiting
+0 south-bound passengers waiting
+
+JFK/UMass Disembarking Passengers: 
+Direction: Southbound
+Passengers: 
+R4MHFOAJAQQJ56T96FPO, Quincy Adams
+Current station: JFK/UMass
+
+Station: JFK/UMass
+0 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+North Quincy Disembarking Passengers: 
+Direction: Southbound
+Passengers: 
+R4MHFOAJAQQJ56T96FPO, Quincy Adams
+Current station: North Quincy
+
+Station: North Quincy
+1 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+JFK/UMass Disembarking Passengers: 
+Direction: Northbound
+Passengers: 
+Current station: JFK/UMass
+
+Wollaston Disembarking Passengers: 
+Direction: Southbound
+Passengers: 
+R4MHFOAJAQQJ56T96FPO, Quincy Adams
+Current station: Wollaston
+
+Station: Wollaston
+0 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+1 south-bound passengers waiting
+
+Quincy Center Disembarking Passengers: 
+RU8Q04PZINQD5RBKG82O
+Direction: Southbound
+Passengers: 
+R4MHFOAJAQQJ56T96FPO, Quincy Adams
+Current station: Quincy Center
+
+Station: Quincy Center
+0 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Quincy Adams Disembarking Passengers: 
+R4MHFOAJAQQJ56T96FPO
+Direction: Southbound
+Passengers: 
+Current station: Quincy Adams
+
+Station: Quincy Adams
+0 north-bound trains waiting
+1 south-bound trains waiting
+1 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Braintree Disembarking Passengers: 
+Direction: Southbound
+Passengers: 
+Current station: Braintree
+
+Station: Braintree
+0 north-bound trains waiting
+1 south-bound trains waiting
+1 north-bound passengers waiting
+0 south-bound passengers waiting
+
+
+ ------ 2 ------ 
+
+Station: Alewife
+0 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+1 south-bound passengers waiting
+
+Davis Disembarking Passengers: 
+Direction: Southbound
+Passengers: 
+G2MLLNT54NTDPU956H4H, Quincy Adams
+Current station: Davis
+
+Station: Davis
+0 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+3 south-bound passengers waiting
+
+Porter Disembarking Passengers: 
+6YR4CLWVXNL9ZEJ5LKJ8
+Direction: Southbound
+Passengers: 
+G2MLLNT54NTDPU956H4H, Quincy Adams
+L8KZ0LDL7IJWAU8JTWBM, Quincy Center
+RM897RG9Z2KBDL7HCCLD, North Quincy
+Current station: Porter
+
+Station: Porter
+0 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+1 south-bound passengers waiting
+
+Harvard Disembarking Passengers: 
+Direction: Southbound
+Passengers: 
+G2MLLNT54NTDPU956H4H, Quincy Adams
+L8KZ0LDL7IJWAU8JTWBM, Quincy Center
+RM897RG9Z2KBDL7HCCLD, North Quincy
+OFDKF3XTRI6LV8ZMP3AH, Kendall/MIT
+Current station: Harvard
+
+Station: Harvard
+0 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Central Disembarking Passengers: 
+Direction: Southbound
+Passengers: 
+G2MLLNT54NTDPU956H4H, Quincy Adams
+L8KZ0LDL7IJWAU8JTWBM, Quincy Center
+RM897RG9Z2KBDL7HCCLD, North Quincy
+OFDKF3XTRI6LV8ZMP3AH, Kendall/MIT
+Current station: Central
+
+Station: Central
+0 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Kendall/MIT Disembarking Passengers: 
+OFDKF3XTRI6LV8ZMP3AH
+Direction: Southbound
+Passengers: 
+G2MLLNT54NTDPU956H4H, Quincy Adams
+L8KZ0LDL7IJWAU8JTWBM, Quincy Center
+RM897RG9Z2KBDL7HCCLD, North Quincy
+Current station: Kendall/MIT
+
+Station: Kendall/MIT
+1 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Central Disembarking Passengers: 
+Direction: Northbound
+Passengers: 
+Current station: Central
+
+Charles/MGH Disembarking Passengers: 
+Direction: Southbound
+Passengers: 
+G2MLLNT54NTDPU956H4H, Quincy Adams
+L8KZ0LDL7IJWAU8JTWBM, Quincy Center
+RM897RG9Z2KBDL7HCCLD, North Quincy
+Current station: Charles/MGH
+
+Station: Charles/MGH
+0 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Park Street Disembarking Passengers: 
+Direction: Southbound
+Passengers: 
+G2MLLNT54NTDPU956H4H, Quincy Adams
+L8KZ0LDL7IJWAU8JTWBM, Quincy Center
+RM897RG9Z2KBDL7HCCLD, North Quincy
+Current station: Park Street
+
+Station: Park Street
+0 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Downtown Crossing Disembarking Passengers: 
+Direction: Southbound
+Passengers: 
+G2MLLNT54NTDPU956H4H, Quincy Adams
+L8KZ0LDL7IJWAU8JTWBM, Quincy Center
+RM897RG9Z2KBDL7HCCLD, North Quincy
+Current station: Downtown Crossing
+
+Station: Downtown Crossing
+0 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+South Station Disembarking Passengers: 
+Direction: Southbound
+Passengers: 
+G2MLLNT54NTDPU956H4H, Quincy Adams
+L8KZ0LDL7IJWAU8JTWBM, Quincy Center
+RM897RG9Z2KBDL7HCCLD, North Quincy
+Current station: South Station
+
+Station: South Station
+0 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Broadway Disembarking Passengers: 
+Direction: Southbound
+Passengers: 
+G2MLLNT54NTDPU956H4H, Quincy Adams
+L8KZ0LDL7IJWAU8JTWBM, Quincy Center
+RM897RG9Z2KBDL7HCCLD, North Quincy
+Current station: Broadway
+
+Station: Broadway
+0 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Andrew Disembarking Passengers: 
+Direction: Southbound
+Passengers: 
+G2MLLNT54NTDPU956H4H, Quincy Adams
+L8KZ0LDL7IJWAU8JTWBM, Quincy Center
+RM897RG9Z2KBDL7HCCLD, North Quincy
+Current station: Andrew
+
+Station: Andrew
+0 north-bound trains waiting
+1 south-bound trains waiting
+1 north-bound passengers waiting
+0 south-bound passengers waiting
+
+JFK/UMass Disembarking Passengers: 
+Direction: Southbound
+Passengers: 
+G2MLLNT54NTDPU956H4H, Quincy Adams
+L8KZ0LDL7IJWAU8JTWBM, Quincy Center
+RM897RG9Z2KBDL7HCCLD, North Quincy
+Current station: JFK/UMass
+
+Station: JFK/UMass
+1 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Andrew Disembarking Passengers: 
+Direction: Northbound
+Passengers: 
+Current station: Andrew
+
+North Quincy Disembarking Passengers: 
+RM897RG9Z2KBDL7HCCLD
+Direction: Southbound
+Passengers: 
+G2MLLNT54NTDPU956H4H, Quincy Adams
+L8KZ0LDL7IJWAU8JTWBM, Quincy Center
+Current station: North Quincy
+
+Station: North Quincy
+0 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Wollaston Disembarking Passengers: 
+Direction: Southbound
+Passengers: 
+G2MLLNT54NTDPU956H4H, Quincy Adams
+L8KZ0LDL7IJWAU8JTWBM, Quincy Center
+Current station: Wollaston
+
+Station: Wollaston
+0 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Quincy Center Disembarking Passengers: 
+L8KZ0LDL7IJWAU8JTWBM
+Direction: Southbound
+Passengers: 
+G2MLLNT54NTDPU956H4H, Quincy Adams
+Current station: Quincy Center
+
+Station: Quincy Center
+0 north-bound trains waiting
+1 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Quincy Adams Disembarking Passengers: 
+G2MLLNT54NTDPU956H4H
+Direction: Southbound
+Passengers: 
+Current station: Quincy Adams
+
+Station: Quincy Adams
+0 north-bound trains waiting
+1 south-bound trains waiting
+1 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Braintree Disembarking Passengers: 
+Direction: Southbound
+Passengers: 
+Current station: Braintree
+
+Station: Braintree
+1 north-bound trains waiting
+1 south-bound trains waiting
+1 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Quincy Adams Disembarking Passengers: 
+Direction: Northbound
+Passengers: 
+7IB1UBZ6NN4CN9E8ZQR6, JFK/UMass
+Current station: Quincy Adams
+
+
+ ------ 3 ------ 
+
+Station: Alewife
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: Davis
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: Porter
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: Harvard
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: Central
+1 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Harvard Disembarking Passengers: 
+Direction: Northbound
+Passengers: 
+Current station: Harvard
+
+Station: Kendall/MIT
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: Charles/MGH
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: Park Street
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: Downtown Crossing
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: South Station
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: Broadway
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: Andrew
+1 north-bound trains waiting
+0 south-bound trains waiting
+1 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Broadway Disembarking Passengers: 
+1JKRG7UTAL9GU8BUICES
+Direction: Northbound
+Passengers: 
+Current station: Broadway
+
+Station: JFK/UMass
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: North Quincy
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: Wollaston
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: Quincy Center
+0 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Station: Quincy Adams
+1 north-bound trains waiting
+0 south-bound trains waiting
+1 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Quincy Center Disembarking Passengers: 
+Direction: Northbound
+Passengers: 
+7IB1UBZ6NN4CN9E8ZQR6, JFK/UMass
+YW9H3GVNY5JEDNZ9QE58, North Quincy
+Current station: Quincy Center
+
+Station: Braintree
+1 north-bound trains waiting
+0 south-bound trains waiting
+0 north-bound passengers waiting
+0 south-bound passengers waiting
+
+Quincy Adams Disembarking Passengers: 
+Direction: Northbound
+Passengers: 
+Current station: Quincy Adams
+
