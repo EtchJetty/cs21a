@@ -44,28 +44,32 @@ public class DoubleLinkedList<T> {
 	public T delete(T key) {
 		if (this.first != null) {
 
-			Node<T> tempNode = this.first;
-			while (tempNode.getNext().getData() != key) {
-
-				tempNode = tempNode.getNext();
-
-				if (tempNode.getNext() == null) {
-					if (tempNode.getData() == key) {
-						tempNode.getPrev().setNext(null);
-						this.size--;
-						return key;
-					}
-					return null;
-				}
+			if (this.first.getData() == key) {
+				this.first.getNext().setPrev(null);
+				this.size--;
+				this.first = this.first.getNext();
+				return key;
 			}
-			tempNode.getPrev().setNext(tempNode.getNext());
-			tempNode.getNext().setPrev(tempNode.getPrev());
-			this.size--;
-			return key;
 
-		} else {
-			return null;
+			for (Node<T> iterNode = this.first; iterNode != null; iterNode = iterNode.getNext()) {
+				if (iterNode.getData() == key) {
+					if (iterNode.getNext() != null) {
+						iterNode.getNext().setPrev(iterNode.getPrev());
+					}
+					if (iterNode.getPrev() != null) {
+						iterNode.getPrev().setNext(iterNode.getNext());
+					}
+					if (iterNode == this.first) {
+						this.first = iterNode.getNext();
+					}
+					this.size--;
+					return key;
+				}
+
+			}
 		}
+		return null;
+
 	}
 
 	/**
