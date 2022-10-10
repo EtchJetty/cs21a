@@ -42,34 +42,24 @@ public class DoubleLinkedList<T> {
 	 * provided key. If the provided key does not exist in the list, return null.
 	 */
 	public T delete(T key) {
-		if (this.first != null) {
 
-			if (this.first.getData() == key) {
-				this.first.getNext().setPrev(null);
+		for (Node<T> iterNode = this.first; iterNode != null; iterNode = iterNode.getNext()) {
+			if (iterNode.getData() == key) {
+				if (iterNode.getNext() != null) {
+					iterNode.getNext().setPrev(iterNode.getPrev());
+				}
+				if (iterNode.getPrev() != null) {
+					iterNode.getPrev().setNext(iterNode.getNext());
+				}
+				if (iterNode == this.first) {
+					this.first = iterNode.getNext();
+				}
 				this.size--;
-				this.first = this.first.getNext();
 				return key;
 			}
 
-			for (Node<T> iterNode = this.first; iterNode != null; iterNode = iterNode.getNext()) {
-				if (iterNode.getData() == key) {
-					if (iterNode.getNext() != null) {
-						iterNode.getNext().setPrev(iterNode.getPrev());
-					}
-					if (iterNode.getPrev() != null) {
-						iterNode.getPrev().setNext(iterNode.getNext());
-					}
-					if (iterNode == this.first) {
-						this.first = iterNode.getNext();
-					}
-					this.size--;
-					return key;
-				}
-
-			}
 		}
 		return null;
-
 	}
 
 	/**
@@ -79,6 +69,12 @@ public class DoubleLinkedList<T> {
 	 * 
 	 */
 	public T get(T key) {
+		for (Node<T> iterNode = this.first; iterNode != null; iterNode = iterNode.getNext()) {
+			if (iterNode.getData() == key) {
+				return iterNode.getData();
+			}
+
+		}
 		return null;
 	}
 
@@ -92,6 +88,10 @@ public class DoubleLinkedList<T> {
 
 	@Override
 	public String toString() {
-		return null;
+		String f = "";
+		for (Node<T> iterNode = this.first; iterNode != null; iterNode = iterNode.getNext()) {
+			f = f + " node data " + iterNode.toString();
+		}
+		return f;
 	}
 }
