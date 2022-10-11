@@ -74,14 +74,17 @@ public class Queue<T> {
 	 * <code>NoSuchElementException</code>.
 	 */
 	public T front() {
-		return null;
+		if (this.tail == this.head) {
+			throw new NoSuchElementException();
+		}
+		return this.q[this.head];
 	}
 
 	/**
 	 * return the number of elements in the queue.
 	 */
 	public int size() {
-		return -1;
+		return this.numEntries;
 	}
 
 	/*
@@ -92,6 +95,12 @@ public class Queue<T> {
 	 */
 	@Override
 	public String toString() {
-		return null;
+		String f = "";
+		for (int i = this.head; i != this.tail; i = (i + 1) % this.numEntries) {
+			if (this.q[i] != null) {
+				f = f + " item " + this.q[i].toString();
+			}
+		}
+		return f;
 	}
 }
