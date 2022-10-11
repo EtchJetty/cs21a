@@ -25,7 +25,7 @@ public class Queue<T> {
 
 	/**
 	 * constructs an empty queue that can hold a specified
-	 * number of elements.
+	 * number of elements. O(1)
 	 * 
 	 * @param capacity
 	 */
@@ -38,7 +38,7 @@ public class Queue<T> {
 	}
 
 	/**
-	 * adds an element at the tail of the queue.
+	 * adds an element at the tail of the queue. O(1)
 	 */
 	public void enqueue(T element) {
 		if (this.numEntries == this.q.length) {
@@ -54,7 +54,7 @@ public class Queue<T> {
 	/**
 	 * removes the element at the head of the queue. If there is no
 	 * such element, <strong>you must throw a<strong>
-	 * <code>NoSuchElementException</code>.
+	 * <code>NoSuchElementException</code>. O(1)
 	 */
 	public void dequeue() {
 		if (this.tail == this.head) {
@@ -71,7 +71,7 @@ public class Queue<T> {
 	/**
 	 * returns the element at the head of the queue. If there is no
 	 * such element, <strong>you must throw a<strong>
-	 * <code>NoSuchElementException</code>.
+	 * <code>NoSuchElementException</code>. O(1)
 	 */
 	public T front() {
 		if (this.tail == this.head) {
@@ -81,7 +81,7 @@ public class Queue<T> {
 	}
 
 	/**
-	 * return the number of elements in the queue.
+	 * return the number of elements in the queue. O(1)
 	 */
 	public int size() {
 		return this.numEntries;
@@ -91,7 +91,7 @@ public class Queue<T> {
 	 * (non-Javadoc)
 	 * 
 	 * @see java.lang.Object#toString()
-	 * return a String representation of the queue’s elements.
+	 * return a String representation of the queue’s elements. O(n)
 	 */
 	@Override
 	public String toString() {

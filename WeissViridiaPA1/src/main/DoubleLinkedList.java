@@ -6,21 +6,21 @@ public class DoubleLinkedList<T> {
 	private Node<T> first;
 
 	/**
-	 * initializes a doubly linked list to have 0 elements.
+	 * initializes a doubly linked list to have 0 elements. O(1)
 	 */
 	public DoubleLinkedList() {
 		this.size = 0;
 	}
 
 	/**
-	 * gets the first node in the list or null if one does not exist.
+	 * gets the first node in the list or null if one does not exist. O(1)
 	 */
 	public Node<T> getFirst() {
 		return this.first;
 	}
 
 	/**
-	 * adds an element to the end of this list.
+	 * adds an element to the end of this list. O(n)
 	 * 
 	 */
 	public void insert(T element) {
@@ -40,6 +40,7 @@ public class DoubleLinkedList<T> {
 	/**
 	 * deletes the first element from this list that matches the
 	 * provided key. If the provided key does not exist in the list, return null.
+	 * O(n)
 	 */
 	public T delete(T key) {
 
@@ -64,7 +65,7 @@ public class DoubleLinkedList<T> {
 
 	/**
 	 * returns the first element in the list that matches the provided key
-	 * or null if one cannot be found.
+	 * or null if one cannot be found. O(n)
 	 * 
 	 * 
 	 */
@@ -79,13 +80,18 @@ public class DoubleLinkedList<T> {
 	}
 
 	/**
-	 * @return returns the number of elements in the list.
+	 * @return returns the number of elements in the list. O(1)
 	 * 
 	 */
 	public int size() {
 		return this.size;
 	}
 
+	/**
+	 * returns a String representation of this list’s elements. O(n)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		String f = "";
