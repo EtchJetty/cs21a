@@ -58,9 +58,9 @@ public class Station {
 	 */
 	public boolean addRider(Rider r) {
 		if (r.getStarting() == this.name) {
-			if (r.goingNorth() && this.northBoundRiders.size() > 0) {
+			if (r.goingNorth() && this.northBoundRiders.size() < QUEUE_CAPACITY) {
 				this.northBoundRiders.enqueue(r);
-			} else if (!r.goingNorth() && this.southBoundRiders.size() > 0) {
+			} else if (!r.goingNorth() && this.southBoundRiders.size() < QUEUE_CAPACITY) {
 				this.southBoundRiders.enqueue(r);
 			}
 			return true;
@@ -84,9 +84,9 @@ public class Station {
 	 * @return
 	 */
 	public String addTrain(Train t) {
-		if (t.goingNorth() && this.northBoundTrains.size() > 0) {
+		if (t.goingNorth() && this.northBoundTrains.size() < QUEUE_CAPACITY) {
 			this.northBoundTrains.enqueue(t);
-		} else if (!t.goingNorth() && this.southBoundTrains.size() > 0) {
+		} else if (!t.goingNorth() && this.southBoundTrains.size() < QUEUE_CAPACITY) {
 			this.southBoundTrains.enqueue(t);
 		}
 		return this.name + " Disembarking Passengers:\n" + t.disembarkPassengers();
