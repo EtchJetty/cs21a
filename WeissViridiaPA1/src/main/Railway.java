@@ -13,21 +13,24 @@ public class Railway {
 	 *
 	 */
 	public String[] stationNames;
+	private static final int MAX_STATIONS = 18;
 
 	/**
-	 * constructs an empty Railway.
+	 * constructs an empty Railway. O(1)
 	 */
 	public Railway() {
 		this.railway = new DoubleLinkedList<Station>();
+		this.stationNames = new String[MAX_STATIONS];
 	}
 
 	/**
-	 * adds a Station to the Railway.
+	 * adds a Station to the Railway. O(n)
 	 * 
 	 * @param s
 	 */
 	public void addStation(Station s) {
-
+		this.railway.insert(s);
+		this.stationNames[this.railway.size()] = s.stationName();
 	}
 
 	/**
