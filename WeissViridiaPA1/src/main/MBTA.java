@@ -1,3 +1,13 @@
+/** 
+  * MBTA implimentation
+  * Known Bugs: None
+  * 
+  * @author Viridia Weiss   
+  * @email gweiss@brandeis.edu
+  * October 9th, 2022
+  * COSI 21A PA1  
+  */
+
 package main;
 
 import java.io.File;
