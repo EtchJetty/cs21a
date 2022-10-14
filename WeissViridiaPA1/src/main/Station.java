@@ -57,7 +57,7 @@ public class Station {
 	 * @return
 	 */
 	public boolean addRider(Rider r) {
-		if (r.getStarting() == this.name) {
+		if (r.getStarting().equals(this.name)) {
 			if (r.goingNorth() && this.northBoundRiders.size() < QUEUE_CAPACITY) {
 				this.northBoundRiders.enqueue(r);
 			} else if (!r.goingNorth() && this.southBoundRiders.size() < QUEUE_CAPACITY) {
@@ -84,12 +84,13 @@ public class Station {
 	 * @return
 	 */
 	public String addTrain(Train t) {
+		t.updateStation(this.name);
 		if (t.goingNorth() && this.northBoundTrains.size() < QUEUE_CAPACITY) {
 			this.northBoundTrains.enqueue(t);
 		} else if (!t.goingNorth() && this.southBoundTrains.size() < QUEUE_CAPACITY) {
 			this.southBoundTrains.enqueue(t);
 		}
-		return this.name + " Disembarking Passengers:\n" + t.disembarkPassengers();
+		return t.getStation() + " Disembarking Passengers:\n" + t.disembarkPassengers();
 	}
 
 	/**
@@ -214,7 +215,7 @@ public class Station {
 			return false;
 		}
 		Station r = (Station) o;
-		return (this.name == r.stationName());
+		return (this.name.equals(r.stationName()));
 
 	}
 }

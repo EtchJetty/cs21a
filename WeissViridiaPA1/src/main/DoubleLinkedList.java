@@ -81,7 +81,7 @@ public class DoubleLinkedList<T> {
 	 */
 	public T get(T key) {
 		for (Node<T> iterNode = this.first; iterNode != null; iterNode = iterNode.getNext()) {
-			if (iterNode.getData() == key) {
+			if (iterNode.getData().equals(key)) {
 				return iterNode.getData();
 			}
 

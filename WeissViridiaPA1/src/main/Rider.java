@@ -93,6 +93,6 @@ public class Rider {
 			return false;
 		}
 		Rider o = (Rider) s;
-		return (this.riderID == o.getRiderID());
+		return (this.riderID.equals(o.getRiderID()));
 	}
 }

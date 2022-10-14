@@ -42,7 +42,7 @@ public class Train {
 	public Train(String currentStation, int direction) {
 		this.currentStation = currentStation;
 		this.direction = (direction == 0); // true is north
-
+		this.passengers = new Rider[TOTAL_PASSENGERS];
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class Train {
 	 * @return
 	 */
 	public boolean addPassenger(Rider r) {
-		if ((this.currentStation == r.getStarting()) && (this.goingNorth() == r.goingNorth())
+		if ((this.currentStation.equals(r.getStarting())) && (this.goingNorth() == r.goingNorth())
 				&& (this.hasSpaceForPassengers())) {
 			this.passengers[this.passengerIndex] = r;
 			this.passengerIndex++;
@@ -146,7 +146,7 @@ public class Train {
 		int tempMax = this.passengerIndex;
 		Rider[] passengersTemp = new Rider[10];
 		for (int i = 0, tempInx = 0; i < tempMax; i++) {
-			if (this.passengers[i].getDestination() == this.currentStation) {
+			if (this.passengers[i].getDestination().equals(this.currentStation)) {
 				s = s + this.passengers[i] + "\n";
 				disembarkString = disembarkString + this.passengers[i].getRiderID() + "\n";
 				this.passengers[i] = null;
@@ -191,8 +191,8 @@ public class Train {
 	public String toString() {
 		String directionString = this.goingNorth() ? "North" : "South";
 
-		return this.currentStation + " Disembarking Passengers:\n" + this.disembarkPassengers() + "Direction: "
-				+ directionString + "bound\nPassengers:" + this.currentPassengers() + "Current station: "
+		return "Direction: "
+				+ directionString + "bound\nPassengers:\n" + this.currentPassengers() + "Current station: "
 				+ this.currentStation;
 	}
 }

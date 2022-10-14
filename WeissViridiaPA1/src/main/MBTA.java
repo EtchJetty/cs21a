@@ -49,8 +49,11 @@ public class MBTA {
 	 * TIMES and Railway’s simulate(). O(n^3)
 	 */
 	public static void runSimulation() {
-		System.out.println("INITIATED RED LINE\n\n");
-		for (int i = 0; i < TIMES; i++) {
+		System.out.println("INITIATED RED LINE\n");
+		System.out.println(r.simulate());
+		System.out.println("BEGINNING RED LINE SIMULATION\n");
+		for (int i = 0; i < TIMES - 1; i++) {
+			System.out.println("------ " + (i + 1) + " ------\n");
 			System.out.println(r.simulate());
 
 		}
