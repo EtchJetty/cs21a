@@ -140,17 +140,14 @@ public class Railway {
 
 		for (int i = 0; i < this.railway.size(); i++) {
 			s = s + testNode.getData().toString() + "\n";
-			// boolean donevar = false;
 			Train northTrain = null;
 			Train southTrain = null;
 			if (testNode.getData().stationName().equals("Braintree")) {
 				northTrain = testNode.getData().northBoardTrain();
 				testNode.getData().moveTrainSouthToNorth();
-				// southTrain = testNode.getData().southBoardTrain();
 			} else if (testNode.getData().stationName().equals("Alewife")) {
 				southTrain = testNode.getData().southBoardTrain();
 				testNode.getData().moveTrainNorthToSouth();
-				// northTrain = testNode.getData().northBoardTrain();
 			} else {
 				southTrain = testNode.getData().southBoardTrain();
 				northTrain = testNode.getData().northBoardTrain();
@@ -160,16 +157,13 @@ public class Railway {
 
 				s = s + testNode.getPrev().getData().addTrain(northTrain);
 				s = s + northTrain.toString() + "\n\n";
-				// northTrain.updateStation(testNode.getPrev().getData().stationName());
 
 			}
 			if (southTrain != null) {
 
 				s = s + testNode.getNext().getData().addTrain(southTrain);
 				s = s + southTrain.toString() + "\n\n";
-				// southTrain.updateStation(testNode.getNext().getData().stationName());
 
-				// }
 			}
 
 			testNode = testNode.getNext();

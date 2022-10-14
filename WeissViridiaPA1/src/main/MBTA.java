@@ -50,9 +50,15 @@ public class MBTA {
 	 */
 	public static void runSimulation() {
 		System.out.println("INITIATED RED LINE\n");
-		System.out.println(r.simulate());
+		Node<Station> testNode = r.railway.getFirst();
+		String s = "";
+		for (int i = 0; i < r.railway.size(); i++) {
+			s = s + testNode.getData().toString() + "\n";
+			testNode = testNode.getNext();
+		}
+		System.out.print(s);
 		System.out.println("BEGINNING RED LINE SIMULATION\n");
-		for (int i = 0; i < TIMES - 1; i++) {
+		for (int i = 0; i < TIMES; i++) {
 			System.out.println("------ " + (i + 1) + " ------\n");
 			System.out.println(r.simulate());
 
