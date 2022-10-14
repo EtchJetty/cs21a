@@ -1,3 +1,13 @@
+/** 
+  * Railway implimentation
+  * Known Bugs: None
+  * 
+  * @author Viridia Weiss   
+  * @email gweiss@brandeis.edu
+  * October 9th, 2022
+  * COSI 21A PA1  
+  */
+
 package main;
 
 public class Railway {
@@ -30,38 +40,67 @@ public class Railway {
 	 */
 	public void addStation(Station s) {
 		this.railway.insert(s);
-		this.stationNames[this.railway.size()] = s.stationName();
+		this.stationNames[this.railway.size() - 1] = s.stationName();
 	}
 
 	/**
 	 * – (i) sets a Rider’s direction based on the order of
 	 * the Stations in the Railway and (ii) adds the Rider to the appropriate
-	 * Station in the Railway.
+	 * Station in the Railway. O(n)
 	 * 
 	 * @param r
 	 */
 	public void addRider(Rider r) {
-
+		this.setRiderDirection(r);
+		Node<Station> testNode = this.railway.getFirst();
+		for (int i = 0; i < this.railway.size(); i++) {
+			if (testNode.getData().stationName().equals(r.getStarting())) {
+				testNode.getData().addRider(r);
+				break;
+			}
+			testNode = testNode.getNext();
+		}
 	}
 
 	/**
 	 * adds a Train to the appropriate Station in this
-	 * Railway.
+	 * Railway. O(n)
 	 * 
 	 * @param t
 	 */
 	public void addTrain(Train t) {
-
+		Node<Station> testNode = this.railway.getFirst();
+		for (int i = 0; i < this.railway.size(); i++) {
+			if (testNode.getData().stationName().equals(t.getStation())) {
+				testNode.getData().addTrain(t);
+			}
+			testNode = testNode.getNext();
+		}
 	}
 
 	/**
 	 * sets a Rider’s direction based on
-	 * the Rider’s starting and ending Stations.
+	 * the Rider’s starting and ending Stations. O(n)
 	 * 
 	 * @param r
 	 */
 	public void setRiderDirection(Rider r) {
+		boolean goingNorth = false; // false if startingStation is first
+		Node<Station> testNode = this.railway.getFirst();
+		for (int i = 0; i < this.railway.size(); i++) {
+			if (testNode.getData().stationName().equals(r.getStarting())) {
+				goingNorth = false;
+				break;
 
+			} else if (testNode.getData().stationName().equals(r.getDestination())) {
+				goingNorth = true;
+				break;
+			}
+			testNode = testNode.getNext();
+		}
+		if (r.goingNorth() != goingNorth) {
+			r.swapDirection();
+		}
 	}
 
 	/**
@@ -90,10 +129,36 @@ public class Railway {
 	 * Station in a single call
 	 * to this method.
 	 * 
+	 * O (n^2)
+	 * 
 	 * @return
 	 */
 	public String simulate() {
-		return null;
+		String s = "";
+		Node<Station> testNode = this.railway.getFirst();
+		for (int i = 0; i < this.railway.size(); i++) {
+
+			if (testNode.getData().stationName().equals("Alewife")) {
+				testNode.getData().moveTrainNorthToSouth();
+			} else if (testNode.getData().stationName().equals("Braintree")) {
+				testNode.getData().moveTrainSouthToNorth();
+			} else {
+				Train northTrain = testNode.getData().northBoardTrain();
+				Train southTrain = testNode.getData().southBoardTrain();
+				if (northTrain != null) {
+					northTrain.updateStation(testNode.getNext().getData().stationName());
+					s = s + testNode.getNext().getData().addTrain(northTrain);
+				}
+				if (southTrain != null) {
+					southTrain.updateStation(testNode.getPrev().getData().stationName());
+					s = s + testNode.getPrev().getData().addTrain(southTrain);
+				}
+			}
+
+			s = s + testNode.getData().toString() + "\n";
+			testNode = testNode.getNext();
+		}
+		return s;
 	}
 
 	/**
@@ -103,6 +168,6 @@ public class Railway {
 	 */
 	@Override
 	public String toString() {
-		return null;
+		return this.railway.toString();
 	}
 }
