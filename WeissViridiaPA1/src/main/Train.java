@@ -41,7 +41,7 @@ public class Train {
 	 */
 	public Train(String currentStation, int direction) {
 		this.currentStation = currentStation;
-		this.direction = (direction == 0); // true is north
+		this.direction = (direction == MBTA.NORTHBOUND); // true is north
 		this.passengers = new Rider[TOTAL_PASSENGERS];
 	}
 

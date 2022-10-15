@@ -22,6 +22,7 @@ class StudentDLLTest {
 		dll.insert("Item2");
 		assertEquals(2, dll.size());
 		assertNotEquals(dll.get("Item1"), dll.get("Item2"));
+		assertEquals(null, dll.delete("null"));
 	}
 
 }

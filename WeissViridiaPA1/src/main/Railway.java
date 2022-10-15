@@ -143,10 +143,10 @@ public class Railway {
 			s = String.join("", s, testNode.getData().toString(), "\n");
 			Train northTrain = null;
 			Train southTrain = null;
-			if (testNode.getData().stationName().equals(this.railway.getFirst().getData().stationName())) {
+			if (testNode.getNext() == null) {
 				northTrain = testNode.getData().northBoardTrain();
 				testNode.getData().moveTrainSouthToNorth();
-			} else if (testNode.getNext() == null) {
+			} else if (testNode.getPrev() == null) {
 				southTrain = testNode.getData().southBoardTrain();
 				testNode.getData().moveTrainNorthToSouth();
 			} else {
