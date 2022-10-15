@@ -63,13 +63,13 @@ public class MBTA {
 		Node<Station> testNode = r.railway.getFirst();
 		String s = "";
 		for (int i = 0; i < r.railway.size(); i++) {
-			s = s + testNode.getData().toString() + "\n";
+			s = String.join("", s, testNode.getData().toString(), "\n");
 			testNode = testNode.getNext();
 		}
 		System.out.print(s);
 		System.out.println("BEGINNING RED LINE SIMULATION\n");
 		for (int i = 0; i < TIMES; i++) {
-			System.out.println("------ " + (i + 1) + " ------\n");
+			System.out.println(String.join("", "------ ", Integer.toString(i + 1), " ------\n"));
 			System.out.println(r.simulate());
 
 		}

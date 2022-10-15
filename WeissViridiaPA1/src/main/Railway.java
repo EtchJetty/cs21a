@@ -139,13 +139,13 @@ public class Railway {
 		Node<Station> testNode = this.railway.getFirst();
 
 		for (int i = 0; i < this.railway.size(); i++) {
-			s = s + testNode.getData().toString() + "\n";
+			s = String.join("", s, testNode.getData().toString(), "\n");
 			Train northTrain = null;
 			Train southTrain = null;
-			if (testNode.getData().stationName().equals("Braintree")) {
+			if (testNode.getData().stationName().equals(this.railway.getFirst().getData().stationName())) {
 				northTrain = testNode.getData().northBoardTrain();
 				testNode.getData().moveTrainSouthToNorth();
-			} else if (testNode.getData().stationName().equals("Alewife")) {
+			} else if (testNode.getNext() == null) {
 				southTrain = testNode.getData().southBoardTrain();
 				testNode.getData().moveTrainNorthToSouth();
 			} else {
@@ -155,14 +155,14 @@ public class Railway {
 
 			if (northTrain != null) {
 
-				s = s + testNode.getPrev().getData().addTrain(northTrain);
-				s = s + northTrain.toString() + "\n\n";
+				s = String.join("", s, testNode.getPrev().getData().addTrain(northTrain));
+				s = String.join("", s, northTrain.toString(), "\n\n");
 
 			}
 			if (southTrain != null) {
 
-				s = s + testNode.getNext().getData().addTrain(southTrain);
-				s = s + southTrain.toString() + "\n\n";
+				s = String.join("", s, testNode.getNext().getData().addTrain(southTrain));
+				s = String.join("", s, southTrain.toString(), "\n\n");
 
 			}
 
