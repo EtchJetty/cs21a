@@ -129,7 +129,8 @@ public class Railway {
 	 * Station in a single call
 	 * to this method.
 	 * 
-	 * O (n^2)
+	 * O (mn), where n is the number of trains
+	 * waiting in a queue, and m is the size of the railway
 	 * 
 	 * @return
 	 */

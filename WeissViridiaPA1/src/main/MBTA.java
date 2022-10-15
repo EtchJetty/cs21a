@@ -40,7 +40,9 @@ public class MBTA {
 	 * The main method should construct
 	 * the Railway with the Stations, Riders, and Trains loaded from the provided
 	 * text files and then run
-	 * the simulation. O(n^3)
+	 * the simulation. O(mnp), where n is the number of trains
+	 * waiting in a queue, m is the size of the railway, and p is the number of
+	 * times the simulation is run
 	 *
 	 * 
 	 * @param args
@@ -56,7 +58,9 @@ public class MBTA {
 
 	/**
 	 * – This method runs the simulation using
-	 * TIMES and Railway’s simulate(). O(n^3)
+	 * TIMES and Railway’s simulate(). O(mnp), where n is the number of trains
+	 * waiting in a queue, m is the size of the railway, and p is the number of
+	 * times the simulation is run
 	 */
 	public static void runSimulation() {
 		System.out.println("INITIATED RED LINE\n");
