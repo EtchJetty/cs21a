@@ -108,7 +108,7 @@ public class Queue<T> {
 		String f = "";
 		for (int i = this.head; i != this.tail; i = (i + 1) % this.numEntries) {
 			if (this.q[i] != null) {
-				f = f + " item " + this.q[i].toString();
+				f = String.join("", f, " item ", this.q[i].toString());
 			}
 		}
 		return f;

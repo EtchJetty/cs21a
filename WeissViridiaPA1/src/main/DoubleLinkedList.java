@@ -106,7 +106,7 @@ public class DoubleLinkedList<T> {
 	public String toString() {
 		String f = "";
 		for (Node<T> iterNode = this.first; iterNode != null; iterNode = iterNode.getNext()) {
-			f = f + " node data " + iterNode.toString();
+			f = String.join("", f, " node data ", iterNode.toString());
 		}
 		return f;
 	}

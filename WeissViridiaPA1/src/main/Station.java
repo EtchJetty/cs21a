@@ -90,7 +90,7 @@ public class Station {
 		} else if (!t.goingNorth() && this.southBoundTrains.size() < QUEUE_CAPACITY) {
 			this.southBoundTrains.enqueue(t);
 		}
-		return t.getStation() + " Disembarking Passengers:\n" + t.disembarkPassengers();
+		return String.join("", t.getStation(), " Disembarking Passengers:\n", t.disembarkPassengers());
 	}
 
 	/**
@@ -188,10 +188,12 @@ public class Station {
 	 */
 	@Override
 	public String toString() {
-		return "Station: " + this.name + "\n" + this.northBoundTrains.size() + " north-bound trains waiting\n"
-				+ this.southBoundTrains.size() + " south-bound trains waiting\n" + this.northBoundRiders.size()
-				+ " north-bound passengers waiting\n" + this.southBoundRiders.size()
-				+ " south-bound passengers waiting\n";
+		return String.join("", "Station: ", this.name, "\n", Integer.toString(this.northBoundTrains.size()),
+				" north-bound trains waiting\n",
+				Integer.toString(this.southBoundTrains.size()), " south-bound trains waiting\n",
+				Integer.toString(this.northBoundRiders.size()),
+				" north-bound passengers waiting\n", Integer.toString(this.southBoundRiders.size()),
+				" south-bound passengers waiting\n");
 	}
 
 	/**

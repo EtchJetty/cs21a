@@ -41,7 +41,7 @@ public class Train {
 	 */
 	public Train(String currentStation, int direction) {
 		this.currentStation = currentStation;
-		this.direction = (direction == 0); // true is north
+		this.direction = (direction == MBTA.NORTHBOUND); // true is north
 		this.passengers = new Rider[TOTAL_PASSENGERS];
 	}
 
@@ -85,7 +85,7 @@ public class Train {
 		String s = "";
 		for (int i = 0; i < passengers.length; i++) {
 			if (passengers[i] != null) {
-				s = s + passengers[i] + "\n";
+				s = String.join("", s, passengers[i].toString(), "\n");
 			}
 		}
 		return s;
@@ -141,14 +141,14 @@ public class Train {
 	 * @return
 	 */
 	public String disembarkPassengers() {
-		String s = "";
+
 		String disembarkString = "";
 		int tempMax = this.passengerIndex;
 		Rider[] passengersTemp = new Rider[10];
 		for (int i = 0, tempInx = 0; i < tempMax; i++) {
 			if (this.passengers[i].getDestination().equals(this.currentStation)) {
-				s = s + this.passengers[i] + "\n";
-				disembarkString = disembarkString + this.passengers[i].getRiderID() + "\n";
+
+				disembarkString = String.join("", disembarkString, this.passengers[i].getRiderID(), "\n");
 				this.passengers[i] = null;
 				this.passengerIndex--;
 			} else {
@@ -191,8 +191,7 @@ public class Train {
 	public String toString() {
 		String directionString = this.goingNorth() ? "North" : "South";
 
-		return "Direction: "
-				+ directionString + "bound\nPassengers:\n" + this.currentPassengers() + "Current station: "
-				+ this.currentStation;
+		return String.join("", "Direction: ", directionString, "bound\nPassengers:\n", this.currentPassengers(),
+				"Current station: ", this.currentStation);
 	}
 }

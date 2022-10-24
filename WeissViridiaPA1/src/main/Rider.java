@@ -77,7 +77,7 @@ public class Rider {
 	 */
 	@Override
 	public String toString() {
-		return this.riderID + ", " + this.destinationStation;
+		return String.join("", this.riderID, ", ", this.destinationStation);
 	}
 
 	/**
