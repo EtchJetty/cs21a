@@ -32,12 +32,14 @@ def sorter(stack: deque):
         sorted2 = deque([])
         for i in (range((lengthy))):
             sorted2.append(sorted.pop())
-        sorter(sorted2)
+        stack = sorter(sorted2)
+    else: stack = sorted
     return stack
 
 
 stack = deque([10, 50, 19, 54, 30, 67])
 stack2 = deque([9, 10, 50, 19, 54, 30, 67])
+stack3 = deque([1])
 
-sorter(stack)
-sorter(stack2)
+print(sorter(stack2))
+# sorter(stack2)
