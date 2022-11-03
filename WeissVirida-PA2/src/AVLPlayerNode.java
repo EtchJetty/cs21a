@@ -25,21 +25,36 @@ public class AVLPlayerNode {
     public AVLPlayerNode insert(Player newGuy, double value) {
         if (value < this.value) { // left
             if (this.leftChild != null) {
-                // add it as left child and do the balance calc thingy
+                this.leftChild = new AVLPlayerNode(newGuy, value);
             } else {
-                this.leftChild.insert(newGuy, value);
+                this.leftChild = this.leftChild.insert(newGuy, value);
             }
+            balanceFactor++;
         } else if (value > this.value) { // right
             if (this.rightChild != null) {
-                // add it as left child and do the balance calc thingy
+                this.rightChild = new AVLPlayerNode(newGuy, value);
             } else {
-                this.rightChild.insert(newGuy, value);
+                this.rightChild = this.rightChild.insert(newGuy, value);
             }
+            balanceFactor--;
         }
 
-        AVLPlayerNode newNode = new AVLPlayerNode(newGuy, value);
+        // rebalancing
+        if (this.balanceFactor > 1) {
+            this.rotateLeft();
+        } else if (this.balanceFactor < -1) {
+            this.rotateRight();
+        }
 
-        return null;
+        return this.getRoot();
+    }
+
+    public AVLPlayerNode getRoot() {
+        if (this.parent != null) {
+            return this.parent.getRoot();
+        } else {
+            return this;
+        }
     }
 
     // This should return the new root of the tree
@@ -63,13 +78,31 @@ public class AVLPlayerNode {
     // this should return the Player object stored in the node with this.value ==
     // value
     public Player getPlayer(double value) {
-        // TODO
+        if (value < this.value && this.leftChild != null) {
+            return this.leftChild.getPlayer(value);
+        } else if (value > this.value && this.rightChild != null) {
+            return this.rightChild.getPlayer(value);
+        } else if (value == this.value) {
+            return this.data;
+        }
         return null;
     }
 
     // this should return the rank of the node with this.value == value
     public int getRank(double value) {
-        // TODO
+        if (value == this.value) {
+            return this.rightWeight;
+        } else if (value > this.value && this.rightChild != null) {
+            return this.rightChild.getRank(value);
+        }
+
+        // if (value < this.value && this.leftChild != null) {
+        // return this.leftChild.getRank(value);
+        // } else if (value > this.value && this.rightChild != null) {
+        // return this.rightChild.getRank(value);
+        // } else {
+        // return this.data;
+        // }
         return 0;
     }
 
