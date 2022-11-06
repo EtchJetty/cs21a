@@ -29,6 +29,7 @@ public class AVLPlayerNode {
             } else {
                 this.leftChild = this.leftChild.insert(newGuy, value);
             }
+            this.leftChild.parent = this;
             balanceFactor++;
         } else if (value > this.value) { // right
             if (this.rightChild != null) {
@@ -36,7 +37,9 @@ public class AVLPlayerNode {
             } else {
                 this.rightChild = this.rightChild.insert(newGuy, value);
             }
+            this.rightChild.parent = this;
             balanceFactor--;
+            rightWeight++;
         }
 
         // rebalancing
@@ -67,12 +70,58 @@ public class AVLPlayerNode {
 
     // remember to maintain rightWeight
     private void rotateRight() {
-        // TODO
+        AVLPlayerNode y = this.leftChild;
+        y.rightWeight = y.rightWeight + this.rightWeight + 1;
+
+        this.leftChild = y.rightChild;
+        if (y.rightChild != null) {
+            y.rightChild.parent = this;
+        }
+        y.parent = this.parent;
+        if (this.parent == null) {
+            // // we dont actually need this check because "tree.root" isn't a feature we're
+            // checking? might be mistaken tho
+        } else if (this == this.parent.rightChild) {
+            this.parent.rightChild = y;
+        } else {
+            this.parent.leftChild = y;
+        }
+        y.rightChild = this;
+        this.parent = y;
     }
 
     // remember to maintain rightWeight
     private void rotateLeft() {
-        // TODO
+        AVLPlayerNode y = this.rightChild;
+        this.rightChild = y.leftChild;
+
+        if (y.leftChild != null) {
+            y.leftChild.parent = this;
+            this.rightWeight = y.rightWeight;
+        } else {
+            this.rightWeight = 0;
+        }
+        y.parent = this.parent;
+        if (y.parent == null) {
+            // t root stuff we don't need
+        } else if (this == this.parent.leftChild) {
+            this.parent.leftChild = y;
+        } else {
+            this.parent.rightChild = y;
+        }
+        y.leftChild = this;
+        this.parent = y;
+    }
+
+    public void printMe(AVLPlayerNode node, int n) {
+        if (node.leftChild != null) {
+            printMe(node.leftChild, n + 1);
+        }
+        System.out.print(new String(new char[n]).replace("\0", " "));
+        System.out.printf("%s is elo %d", node.data.toString(), node.value);
+        if (node.leftChild != null) {
+            printMe(node.leftChild, n + 1);
+        }
     }
 
     // this should return the Player object stored in the node with this.value ==
@@ -96,28 +145,52 @@ public class AVLPlayerNode {
             return this.rightChild.getRank(value);
         }
 
-        // if (value < this.value && this.leftChild != null) {
-        // return this.leftChild.getRank(value);
-        // } else if (value > this.value && this.rightChild != null) {
-        // return this.rightChild.getRank(value);
-        // } else {
-        // return this.data;
-        // }
-        return 0;
+        if (value < this.value && this.leftChild != null) { // TODO
+            return this.leftChild.getRank(value) + 1; // MAYBE FIXED???
+        } else if (value > this.value && this.rightChild != null) {
+            return this.rightChild.getRank(value);
+        } else {
+            return this.rightWeight;
+        }
     }
 
     // this should return the tree of names with parentheses separating subtrees
     // eg "((bob)alice(bill))"
     public String treeString() {
-        // TODO
-        return "";
+        String s = "(";
+
+        if (this.leftChild != null) {
+            s = s + this.leftChild.treeString();
+        }
+        s = s + this.data.getName();
+        if (this.rightChild != null) {
+            s = s + this.rightChild.treeString();
+        }
+        s = s + ")";
+        return s;
     }
 
     // this should return a formatted scoreboard in descending order of value
     // see example printout in the pdf for the command L
-    public String scoreboard() {
-        // TODO
+    public String scoreboard_loop() {
+        String s = "";
+
+        if (this.rightChild != null) {
+            s = s + this.rightChild.scoreboard_loop();
+        }
+
+        s = String.join("", String.format("%-[14]s", this.data.getName()),
+                String.format("%[2]s", Integer.toString(this.data.getID())), " ", Double.toString(this.value));
+
+        if (this.leftChild != null) {
+            s = s + this.leftChild.scoreboard_loop();
+        }
+
         return "";
+    }
+
+    public String scoreboard() {
+        return String.join("", "NAME          ID  SCORE", scoreboard_loop(), "\n");
     }
 
 }
