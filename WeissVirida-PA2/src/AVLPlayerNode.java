@@ -30,7 +30,8 @@ public class AVLPlayerNode {
             } else {
                 this.leftChild.insert(newGuy, value);
             }
-            balanceFactor++;
+            this.balanceFactor++;
+
         } else if (value > this.value) { // right
             if (this.rightChild == null) {
                 this.rightChild = new AVLPlayerNode(newGuy, value);
@@ -38,20 +39,41 @@ public class AVLPlayerNode {
             } else {
                 this.rightChild.insert(newGuy, value);
             }
-            balanceFactor--;
-            rightWeight++;
+            this.balanceFactor--;
+
+            this.rightWeight++;
         }
 
         // rebalancing
-        if (this.balanceFactor > 1) {
-            this.rotateRight();
-            this.balanceFactor--;
-        } else if (this.balanceFactor < -1) {
-            this.rotateLeft();
-            this.balanceFactor++;
-        }
+        this.autoBalance();
 
         return this.getRoot();
+    }
+
+    private void autoBalance() {
+        if (this.balanceFactor > 1) {
+            if (this.leftChild != null) { // double right
+                if (this.leftChild.balanceFactor == -1) {
+                    this.leftChild.balanceFactor++;
+                    this.leftChild.rotateLeft();
+                }
+            }
+            this.balanceFactor--;
+            this.rotateRight();
+        } else if (this.balanceFactor < -1) {
+            if (this.rightChild != null) { // double left
+                if (this.rightChild.balanceFactor == 1) {
+                    this.rightChild.balanceFactor--;
+                    this.rightChild.rotateRight();
+                }
+            }
+            this.balanceFactor++;
+            this.rotateLeft();
+        }
+
+        if (this.balanceFactor > 1 || this.balanceFactor < -1) {
+            this.autoBalance();
+        }
     }
 
     public AVLPlayerNode getRoot() {
@@ -175,13 +197,13 @@ public class AVLPlayerNode {
     // this should return a formatted scoreboard in descending order of value
     // see example printout in the pdf for the command L
     public String scoreboard_loop() {
-        String s = "\n";
+        String s = "";
 
         if (this.rightChild != null) {
             s = s + this.rightChild.scoreboard_loop();
         }
 
-        s = String.join("", String.format("%-14s", this.data.getName()),
+        s = s + String.join("", "\n", String.format("%-14s", this.data.getName()),
                 String.format("%2s", Integer.toString(this.data.getID())), " ", Double.toString(this.value));
 
         if (this.leftChild != null) {
