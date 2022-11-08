@@ -51,22 +51,20 @@ public class ScoreKeeper {
 
 	public static AVLPlayerNode getTree(Player[] players, boolean useElo) {
 		// Uncomment this code when you have implemented insert
-		/*
-		 * AVLPlayerNode tree = new
-		 * AVLPlayerNode(players[0],(double)players[0].getID());
-		 * if (useElo){
-		 * tree = new AVLPlayerNode(players[0],players[0].getELO());
-		 * }
-		 * for (int i = 1; i < players.length; i++){
-		 * if (useElo){
-		 * tree=tree.insert(players[i],players[i].getELO());
-		 * }else{
-		 * tree=tree.insert(players[i],(double)players[i].getID());
-		 * }
-		 * }
-		 * return tree;
-		 */
-		return null;
+
+		AVLPlayerNode tree = new AVLPlayerNode(players[0], (double) players[0].getID());
+		if (useElo) {
+			tree = new AVLPlayerNode(players[0], players[0].getELO());
+		}
+		for (int i = 1; i < players.length; i++) {
+			if (useElo) {
+				tree = tree.insert(players[i], players[i].getELO());
+			} else {
+				tree = tree.insert(players[i], (double) players[i].getID());
+			}
+		}
+		return tree;
+
 	}
 
 	public static void checkRank(AVLPlayerNode eloTree, AVLPlayerNode idTree, Scanner scan) {
@@ -97,11 +95,11 @@ public class ScoreKeeper {
 				case 'A':
 					// Uncomment this code when you have implemented insert
 
-					// Player p = getNextPlayer(scan);
-					// eloTree=eloTree.insert(p,p.getELO());
-					// idTree=idTree.insert(p,(double)p.getID());
-					// numPeople++;
-					System.out.println("Unsupported operation");
+					Player p = getNextPlayer(scan);
+					eloTree = eloTree.insert(p, p.getELO());
+					idTree = idTree.insert(p, (double) p.getID());
+					numPeople++;
+					// System.out.println("Unsupported operation");
 					break;
 				case 'D':
 					if (numPeople > 3) {
@@ -121,24 +119,24 @@ public class ScoreKeeper {
 					break;
 				case 'R':
 					// Uncomment this code when you have implemented getPlayer and getRank
-					// checkRank(eloTree,idTree,scan);
-					System.out.println("Unsupported Operation");
+					checkRank(eloTree, idTree, scan);
+					// System.out.println("Unsupported Operation");
 					break;
 				case 'E':
 					// Uncomment this code when you have implemented getRank
-					// checkELO(idTree,scan);
-					System.out.println("Unsupported Operation");
+					checkELO(idTree, scan);
+					// System.out.println("Unsupported Operation");
 					break;
 				case 'L':
 					// Uncomment this code when you have implemented scoreboard
-					// System.out.println(eloTree.scoreboard());
-					System.out.println("Unsupported Operation");
+					System.out.println(eloTree.scoreboard());
+					// System.out.println("Unsupported Operation");
 					break;
 				case 'P':
 					// Uncomment this code when you have implemented treeString
-					// System.out.println("ELO tree: "+eloTree.treeString());
-					// System.out.println("ID tree: "+idTree.treeString());
-					System.out.println("Unsupported Operation");
+					System.out.println("ELO tree: " + eloTree.treeString());
+					System.out.println("ID tree: " + idTree.treeString());
+					// System.out.println("Unsupported Operation");
 					break;
 				case 'M':
 					// extra credit, requires self balancing delete

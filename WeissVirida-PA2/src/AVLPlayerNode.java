@@ -24,29 +24,31 @@ public class AVLPlayerNode {
     // and use rotations to maintain AVL condition
     public AVLPlayerNode insert(Player newGuy, double value) {
         if (value < this.value) { // left
-            if (this.leftChild != null) {
+            if (this.leftChild == null) {
                 this.leftChild = new AVLPlayerNode(newGuy, value);
+                this.leftChild.parent = this;
             } else {
-                this.leftChild = this.leftChild.insert(newGuy, value);
+                this.leftChild.insert(newGuy, value);
             }
-            this.leftChild.parent = this;
             balanceFactor++;
         } else if (value > this.value) { // right
-            if (this.rightChild != null) {
+            if (this.rightChild == null) {
                 this.rightChild = new AVLPlayerNode(newGuy, value);
+                this.rightChild.parent = this;
             } else {
-                this.rightChild = this.rightChild.insert(newGuy, value);
+                this.rightChild.insert(newGuy, value);
             }
-            this.rightChild.parent = this;
             balanceFactor--;
             rightWeight++;
         }
 
         // rebalancing
         if (this.balanceFactor > 1) {
-            this.rotateLeft();
-        } else if (this.balanceFactor < -1) {
             this.rotateRight();
+            this.balanceFactor--;
+        } else if (this.balanceFactor < -1) {
+            this.rotateLeft();
+            this.balanceFactor++;
         }
 
         return this.getRoot();
@@ -173,24 +175,24 @@ public class AVLPlayerNode {
     // this should return a formatted scoreboard in descending order of value
     // see example printout in the pdf for the command L
     public String scoreboard_loop() {
-        String s = "";
+        String s = "\n";
 
         if (this.rightChild != null) {
             s = s + this.rightChild.scoreboard_loop();
         }
 
-        s = String.join("", String.format("%-[14]s", this.data.getName()),
-                String.format("%[2]s", Integer.toString(this.data.getID())), " ", Double.toString(this.value));
+        s = String.join("", String.format("%-14s", this.data.getName()),
+                String.format("%2s", Integer.toString(this.data.getID())), " ", Double.toString(this.value));
 
         if (this.leftChild != null) {
             s = s + this.leftChild.scoreboard_loop();
         }
 
-        return "";
+        return s;
     }
 
     public String scoreboard() {
-        return String.join("", "NAME          ID  SCORE", scoreboard_loop(), "\n");
+        return String.join("", "NAME          ID  SCORE", this.scoreboard_loop(), "\n");
     }
 
 }
