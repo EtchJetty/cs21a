@@ -33,9 +33,15 @@ public class ScoreKeeper {
 		System.out.printf("Thank you. You may now enter in %d players, one at a time\n", n);
 		Player[] people = new Player[n];
 		for (int i = 0; i < n; i++) {
-			people[i] = getNextPlayer(scan);
+			// people[i] = getNextPlayer(scan);
+			people[i] = genBadPlayer(i);
 		}
 		return people;
+	}
+
+	public static Player genBadPlayer(int i) {
+		Player p = new Player(Integer.toString(i + 1), i + 1, i + 1);
+		return p;
 	}
 
 	public static Player getNextPlayer(Scanner scan) {

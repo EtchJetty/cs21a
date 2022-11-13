@@ -27,30 +27,39 @@ public class AVLPlayerNode {
             if (this.leftChild == null) {
                 this.leftChild = new AVLPlayerNode(newGuy, value);
                 this.leftChild.parent = this;
+                if (this.rightChild == null) {
+                    this.balanceFactor++;
+                }
             } else {
                 this.leftChild.insert(newGuy, value);
             }
-            this.balanceFactor++;
 
         } else if (value > this.value) { // right
             if (this.rightChild == null) {
                 this.rightChild = new AVLPlayerNode(newGuy, value);
                 this.rightChild.parent = this;
+                if (this.leftChild == null) {
+                    this.balanceFactor--;
+                }
             } else {
                 this.rightChild.insert(newGuy, value);
             }
-            this.balanceFactor--;
-
             this.rightWeight++;
         }
 
-        // rebalancing
-        this.autoBalance();
-
-        return this;
+        return this.autoBalance();
     }
 
-    private void autoBalance() {
+    private void balanceFactor() {
+        if (this.leftChild == null && this.rightChild == null) {
+            this.balanceFactor = 0;
+        } else if (this.leftChild != null) {
+            // if (this.leftChild.balanceFactor) {
+            // }
+        }
+    }
+
+    private AVLPlayerNode autoBalance() {
         if (this.balanceFactor > 1) {
 
             if (this.leftChild != null) { // double right
@@ -61,7 +70,7 @@ public class AVLPlayerNode {
                     if (this.parent.balanceFactor == 0) {
                         this.parent.leftChild.balanceFactor = 0;
                         this.balanceFactor = 0;
-                    } else if (this.parent.balanceFactor < 0) {
+                    } else if (this.parent.balanceFactor > 0) {
                         this.balanceFactor = -1;
                         this.parent.leftChild.balanceFactor = 0;
                     } else {
@@ -70,7 +79,7 @@ public class AVLPlayerNode {
                     }
                     this.parent.balanceFactor = 0;
 
-                    return;
+                    return this.parent;
                 }
             }
 
@@ -102,7 +111,7 @@ public class AVLPlayerNode {
                     }
                     this.parent.balanceFactor = 0;
 
-                    return;
+                    return this.parent;
                 }
             }
 
@@ -115,6 +124,11 @@ public class AVLPlayerNode {
                 this.parent.balanceFactor = 0;
             }
         }
+
+        if (this.parent == null) {
+            return this;
+        }
+        return this.parent;
 
     }
 
