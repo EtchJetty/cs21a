@@ -47,33 +47,75 @@ public class AVLPlayerNode {
         // rebalancing
         this.autoBalance();
 
-        return this.getRoot();
+        return this;
     }
 
     private void autoBalance() {
         if (this.balanceFactor > 1) {
+
             if (this.leftChild != null) { // double right
-                if (this.leftChild.balanceFactor == -1) {
-                    this.leftChild.balanceFactor++;
+                if (this.leftChild.balanceFactor < 0) {
                     this.leftChild.rotateLeft();
+                    this.rotateRight();
+
+                    if (this.parent.balanceFactor == 0) {
+                        this.parent.leftChild.balanceFactor = 0;
+                        this.balanceFactor = 0;
+                    } else if (this.parent.balanceFactor < 0) {
+                        this.balanceFactor = -1;
+                        this.parent.leftChild.balanceFactor = 0;
+                    } else {
+                        this.balanceFactor = 0;
+                        this.parent.leftChild.balanceFactor = 1;
+                    }
+                    this.parent.balanceFactor = 0;
+
+                    return;
                 }
             }
-            this.balanceFactor--;
+
             this.rotateRight();
+            if (this.parent.balanceFactor == 0) {
+                this.balanceFactor = 1;
+                this.parent.balanceFactor = -1;
+            } else {
+                this.balanceFactor = 0;
+                this.parent.balanceFactor = 0;
+            }
+
         } else if (this.balanceFactor < -1) {
+
             if (this.rightChild != null) { // double left
-                if (this.rightChild.balanceFactor == 1) {
-                    this.rightChild.balanceFactor--;
+                if (this.rightChild.balanceFactor > 0) {
                     this.rightChild.rotateRight();
+                    this.rotateLeft();
+
+                    if (this.parent.balanceFactor == 0) {
+                        this.parent.rightChild.balanceFactor = 0;
+                        this.balanceFactor = 0;
+                    } else if (this.parent.balanceFactor < 0) {
+                        this.balanceFactor = 1;
+                        this.parent.rightChild.balanceFactor = 0;
+                    } else {
+                        this.balanceFactor = 0;
+                        this.parent.rightChild.balanceFactor = -1;
+                    }
+                    this.parent.balanceFactor = 0;
+
+                    return;
                 }
             }
-            this.balanceFactor++;
+
             this.rotateLeft();
+            if (this.parent.balanceFactor == 0) {
+                this.balanceFactor = -1;
+                this.parent.balanceFactor = 1;
+            } else {
+                this.balanceFactor = 0;
+                this.parent.balanceFactor = 0;
+            }
         }
 
-        if (this.balanceFactor > 1 || this.balanceFactor < -1) {
-            this.autoBalance();
-        }
     }
 
     public AVLPlayerNode getRoot() {
@@ -180,13 +222,27 @@ public class AVLPlayerNode {
 
     // this should return the tree of names with parentheses separating subtrees
     // eg "((bob)alice(bill))"
-    public String treeString() {
+    public String treeString_submittable() {
         String s = "(";
 
         if (this.leftChild != null) {
             s = s + this.leftChild.treeString();
         }
         s = s + this.data.getName();
+        if (this.rightChild != null) {
+            s = s + this.rightChild.treeString();
+        }
+        s = s + ")";
+        return s;
+    }
+
+    public String treeString() {
+        String s = "(";
+
+        if (this.leftChild != null) {
+            s = s + this.leftChild.treeString();
+        }
+        s = s + this.data.getName() + " " + this.balanceFactor;
         if (this.rightChild != null) {
             s = s + this.rightChild.treeString();
         }
