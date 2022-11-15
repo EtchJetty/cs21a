@@ -130,18 +130,42 @@ public class AVLUnitTesting {
     }
 
     @Test
-    void testPA2CaseFlipped() {
+    void testPA2CaseWithDelete() {
         AVLPlayerNode eloTree = new AVLPlayerNode(new Player("Mike", 1, 2400), 2400);
         eloTree = eloTree.insert(new Player("Sandra", 2, 2300), 2300);
         eloTree = eloTree.insert(new Player("Fred", 4, 2100), 2100);
         eloTree = eloTree.insert(new Player("Eric", 3, 2200), 2200);
 
-        // AVLPlayerNode idTree = new AVLPlayerNode(new Player("Mike", 1, 2400), 1);
-        // idTree = idTree.insert(new Player("Sandra", 2, 2300), 2);
-        // idTree = idTree.insert(new Player("Fred", 4, 2100), 4);
-        // idTree = idTree.insert(new Player("Eric", 3, 2200), 3);
+        AVLPlayerNode idTree = new AVLPlayerNode(new Player("Mike", 1, 2400), 1);
+        idTree = idTree.insert(new Player("Sandra", 2, 2300), 2);
+        idTree = idTree.insert(new Player("Fred", 4, 2100), 4);
+        idTree = idTree.insert(new Player("Eric", 3, 2200), 3);
 
         assertEquals(eloTree.treeString(), "((Fred(Eric))Sandra(Mike))");
+
+        Player curtains = idTree.getPlayer((double) 2);
+        idTree = idTree.delete(2);
+        eloTree = eloTree.delete(curtains.getELO());
+
+        assertEquals(eloTree.treeString(), "((Fred(Eric))Mike)");
+
+        curtains = idTree.getPlayer((double) 1);
+        idTree = idTree.delete(1);
+        eloTree = eloTree.delete(curtains.getELO());
+
+        assertEquals(eloTree.treeString(), "(Fred(Eric))");
+
+        node = new AVLPlayerNode(makePlayer(1), 1);
+        for (int i = 2; i < 16; i++) {
+            node = insertSingleNode(node, i);
+        }
+
+        assertEquals(node.treeString(), "((((1)2(3))4((5)6(7)))8(((9)10(11))12((13)14(15))))");
+        node = node.delete(11);
+        assertEquals(node.treeString(), "((((1)2(3))4((5)6(7)))8(((9)10)12((13)14(15))))");
+        node = node.delete(4);
+        assertEquals(node.treeString(), "((((1)2(3))5(6(7)))8(((9)10)12((13)14(15))))");
+
     }
 
     public static Player makePlayer(int i) {

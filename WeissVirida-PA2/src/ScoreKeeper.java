@@ -33,8 +33,8 @@ public class ScoreKeeper {
 		System.out.printf("Thank you. You may now enter in %d players, one at a time\n", n);
 		Player[] people = new Player[n];
 		for (int i = 0; i < n; i++) {
-			people[i] = getNextPlayer(scan);
-			// people[i] = genBadPlayer(i);
+			// people[i] = getNextPlayer(scan);
+			people[i] = genBadPlayer(i);
 		}
 		return people;
 	}
@@ -117,15 +117,14 @@ public class ScoreKeeper {
 					if (numPeople > 3) {
 						// Uncomment this code when you have implemented delete
 
-						// System.out
-						// .println("Please enter the ID number of the player you wish to remove from
-						// the system");
-						// int id = scan.nextInt();
-						// Player curtains = idTree.getPlayer((double) id);
-						// idTree = idTree.delete(id);
-						// eloTree = eloTree.delete(curtains.getELO());
-						// numPeople--;
-						System.out.println("Unsupported operation");
+						System.out
+								.println("Please enter the ID number of the player you wish to remove from the system");
+						int id = scan.nextInt();
+						Player curtains = idTree.getPlayer((double) id);
+						idTree = idTree.delete(id);
+						eloTree = eloTree.delete(curtains.getELO());
+						numPeople--;
+						// System.out.println("Unsupported operation");
 					} else {
 						System.out.println("Cannot afford to lose any more people");
 					}

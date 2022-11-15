@@ -5,7 +5,8 @@
  * ScoreKeeper.java.
  * </p>
  * <p>
- * Known bugs: <code>delete()</code> is mostly nonfunctional
+ * Known bugs: <code>delete()</code> doesn't change balance factors and thus
+ * insertions do not work after a delete (only required for extra credit)
  * </p>
  * 
  * @author
@@ -195,58 +196,83 @@ public class AVLPlayerNode {
     }
 
     /**
-     * Deletion function
+     * Deletion function. Runtime is O(log(n))
      * 
      * @param value the value of the node to be deleted
      * @return the new root of the tree
      */
     public AVLPlayerNode delete(double value) {
-        // TODO: write standard vanilla BST delete method
         // Extra Credit: use rotations to maintain the AVL condition
-        if (value < this.value) { // left
-            if (this.leftChild == null) {
-                return null;
-            } else {
-                this.leftChild.delete(value);
-            }
-            this.leftWeight--;
-
-        } else if (value > this.value) { // right
-            if (this.rightChild == null) {
-                return null;
-            } else {
-                this.rightChild.delete(value);
-            }
-            this.rightWeight--;
+        if (value < this.value && this.leftChild != null) {
+            this.leftChild.delete(value);
+        } else if (value > this.value && this.rightChild != null) {
+            this.rightChild.delete(value);
         } else if (value == this.value) {
-            if (this.leftChild == null && this.rightChild == null) {
-                if (this.parent.leftChild == this) {
-                    this.parent.leftChild = null;
-                } else if (this.parent.rightChild == this) {
-                    this.parent.rightChild = null;
-                }
-            }
-            if (this.leftChild != null && this.rightChild == null) {
-                if (this.parent.leftChild == this) {
-                    this.parent.leftChild = this.leftChild;
-                    this.parent.leftChild = this.leftChild;
-                } else if (this.parent.rightChild == this) {
-                    this.parent.rightChild = this.rightChild;
-                    this.rightChild.parent = this.parent;
-                }
-            } else if (this.leftChild == null && this.rightChild != null) {
-                if (this.parent.leftChild == this) {
-                    this.parent.leftChild = this.rightChild;
-                    this.parent.leftChild = this.rightChild;
-                } else if (this.parent.rightChild == this) {
-                    this.parent.rightChild = this.leftChild;
-                    this.leftChild.parent = this.parent;
-                }
-            }
+            return this.delete_node();
         }
 
-        return this.autoBalance();
+        return this;
+    }
 
+    public AVLPlayerNode getRoot() {
+        if (this.parent != null) {
+            return this.parent.getRoot();
+        } else {
+            return this;
+        }
+    }
+
+    private AVLPlayerNode delete_node() {
+        if (this.leftChild == null) {
+            this.shiftNodes(this.rightChild);
+            return this.rightChild;
+        } else if (this.rightChild == null) {
+            this.shiftNodes(this.leftChild);
+            return this.leftChild;
+        } else {
+            AVLPlayerNode y = this.treeSuccessor();
+            if (y.parent != this) {
+                y.shiftNodes(y.rightChild);
+                y.rightChild = this.rightChild;
+                y.rightChild.parent = y;
+            }
+            this.shiftNodes(y);
+            y.leftChild = this.leftChild;
+            y.leftChild.parent = y;
+            return y;
+        }
+    }
+
+    private AVLPlayerNode treeSuccessor() {
+        if (this.rightChild != null) {
+            AVLPlayerNode x = this.rightChild;
+            while (x.leftChild != null) {
+                x = x.leftChild;
+            }
+            return x;
+        }
+        AVLPlayerNode y = this.parent;
+        AVLPlayerNode yCompare = this;
+
+        while (y != null && yCompare == y.rightChild) {
+            yCompare = y;
+            y = y.parent;
+        }
+
+        return y;
+    }
+
+    private void shiftNodes(AVLPlayerNode v) {
+        if (this.parent == null) {
+            // tree root stuff we dont need
+        } else if (this == this.parent.leftChild) {
+            this.parent.leftChild = v;
+        } else {
+            this.parent.rightChild = v;
+        }
+        if (v != null) {
+            v.parent = this.parent;
+        }
     }
 
     /**
