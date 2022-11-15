@@ -57,9 +57,7 @@ public class AVLPlayerNode {
             if (this.leftChild == null) {
                 this.leftChild = new AVLPlayerNode(newGuy, value);
                 this.leftChild.parent = this;
-                // if (this.rightChild == null) {
                 this.leftChild.balanceFactor();
-                // }
             } else {
                 this.leftChild.insert(newGuy, value);
             }
@@ -263,12 +261,12 @@ public class AVLPlayerNode {
     }
 
     private void shiftNodes(AVLPlayerNode v) {
-        if (this.parent == null) {
-            // tree root stuff we dont need
-        } else if (this == this.parent.leftChild) {
-            this.parent.leftChild = v;
-        } else {
-            this.parent.rightChild = v;
+        if (this.parent != null) {
+            if (this == this.parent.leftChild) {
+                this.parent.leftChild = v;
+            } else if (this == this.parent.rightChild) {
+                this.parent.rightChild = v;
+            }
         }
         if (v != null) {
             v.parent = this.parent;
@@ -288,14 +286,15 @@ public class AVLPlayerNode {
         if (y.rightChild != null) {
             y.rightChild.parent = this;
         } else {
+            this.leftWeight = 0;
         }
         y.parent = this.parent;
-        if (this.parent == null) {
-            // t root stuff we don't need
-        } else if (this == this.parent.rightChild) {
-            this.parent.rightChild = y;
-        } else {
-            this.parent.leftChild = y;
+        if (this.parent != null) {
+            if (this == this.parent.rightChild) {
+                this.parent.rightChild = y;
+            } else if (this == this.parent.leftChild) {
+                this.parent.leftChild = y;
+            }
         }
         y.rightChild = this;
         this.parent = y;
@@ -319,12 +318,12 @@ public class AVLPlayerNode {
         }
 
         y.parent = this.parent;
-        if (y.parent == null) {
-            // t root stuff we don't need
-        } else if (this == this.parent.leftChild) {
-            this.parent.leftChild = y;
-        } else {
-            this.parent.rightChild = y;
+        if (y.parent != null) {
+            if (this == this.parent.leftChild) {
+                this.parent.leftChild = y;
+            } else if (this == this.parent.rightChild) {
+                this.parent.rightChild = y;
+            }
         }
         y.leftChild = this;
         this.parent = y;
