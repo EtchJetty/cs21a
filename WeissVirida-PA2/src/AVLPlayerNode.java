@@ -212,14 +212,6 @@ public class AVLPlayerNode {
         return this;
     }
 
-    public AVLPlayerNode getRoot() {
-        if (this.parent != null) {
-            return this.parent.getRoot();
-        } else {
-            return this;
-        }
-    }
-
     private AVLPlayerNode delete_node() {
         if (this.leftChild == null) {
             this.shiftNodes(this.rightChild);
