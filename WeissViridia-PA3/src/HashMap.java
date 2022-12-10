@@ -1,5 +1,19 @@
 public class HashMap {
 
+    private DoubleLinkedList<GraphNode, Integer>[] hashArray;
+    private int arrSize;
+
+    public int getArrSize() {
+        return arrSize;
+    }
+
+    public HashMap(int size) {
+        @SuppressWarnings("unchecked")
+        DoubleLinkedList<GraphNode, Integer>[] haA = (DoubleLinkedList<GraphNode, Integer>[]) new DoubleLinkedList[size];
+        this.hashArray = haA;
+        this.arrSize = size;
+    }
+
     /**
      * - check the hashmap to see if there is an Entry for the
      * GraphNode “key”, if there is, change its value to “value”, otherwise, add it
@@ -10,27 +24,45 @@ public class HashMap {
      * @param value
      */
     public void set(GraphNode key, int value) {
+        int hashVal = hash(key);
+        Integer val = this.hashArray[hashVal].get(key);
+        if (val != null) {
+            this.hashArray[hashVal].update(key, val);
+        } else {
+            this.hashArray[hashVal].insert(key, val);
+        }
 
     }
 
+    private int hash(GraphNode key) {
+        int hashNum = 0;
+        for (int i = 0; i < key.getId().length(); i++) {
+            hashNum += key.getId().charAt(i);
+        }
+        return hashNum % getArrSize();
+    }
+
     /**
-     * - gets the value for the entry with g as the key.
-     * 3.
+     * gets the value for the entry with g as the key.
+     * 
      * 
      * @param g
      * @return
      */
     public int getValue(GraphNode g) {
-        return 0;
+        return this.hashArray[hash(g)].get(g);
     }
 
     /**
-     * - true if the hashmap has that key.
+     * true if the hashmap has that key.
      * 
      * @param g
      * @return
      */
     public boolean hasKey(GraphNode g) {
+        if (this.hashArray[hash(g)].get(g) != null) {
+            return true;
+        }
         return false;
     }
 }

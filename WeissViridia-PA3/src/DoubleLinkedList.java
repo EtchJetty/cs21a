@@ -1,17 +1,17 @@
-/** 
-  * Double Linked List implementation
-  * Known Bugs: None
-  * 
-  * @author Viridia Weiss   
-  * @email gweiss@brandeis.edu
-  * October 9th, 2022
-  * COSI 21A PA1  
-  */
+/**
+ * Double Linked List implementation
+ * Known Bugs: None
+ * 
+ * @author Viridia Weiss
+ * @email gweiss@brandeis.edu
+ *        October 9th, 2022
+ *        COSI 21A PA1
+ */
 
-public class DoubleLinkedList<T> {
+public class DoubleLinkedList<T, E> {
 
 	private int size;
-	private Node<T> first;
+	private Node<T, E> first;
 
 	/**
 	 * initializes a doubly linked list to have 0 elements. O(1)
@@ -23,7 +23,7 @@ public class DoubleLinkedList<T> {
 	/**
 	 * gets the first node in the list or null if one does not exist. O(1)
 	 */
-	public Node<T> getFirst() {
+	public Node<T, E> getFirst() {
 		return this.first;
 	}
 
@@ -31,16 +31,16 @@ public class DoubleLinkedList<T> {
 	 * adds an element to the end of this list. O(n)
 	 * 
 	 */
-	public void insert(T element) {
+	public void insert(T key, E value) {
 		if (this.first != null) {
-			Node<T> tempNode = this.first;
+			Node<T, E> tempNode = this.first;
 			while (tempNode.getNext() != null) {
 				tempNode = tempNode.getNext();
 			}
-			tempNode.setNext(new Node<T>(element));
+			tempNode.setNext(new Node<T, E>(key, value));
 			tempNode.getNext().setPrev(tempNode);
 		} else {
-			this.first = new Node<T>(element);
+			this.first = new Node<T, E>(key, value);
 		}
 		this.size++;
 	}
@@ -52,8 +52,8 @@ public class DoubleLinkedList<T> {
 	 */
 	public T delete(T key) {
 
-		for (Node<T> iterNode = this.first; iterNode != null; iterNode = iterNode.getNext()) {
-			if (iterNode.getData() == key) {
+		for (Node<T, E> iterNode = this.first; iterNode != null; iterNode = iterNode.getNext()) {
+			if (iterNode.getKey() == key) {
 				if (iterNode.getNext() != null) {
 					iterNode.getNext().setPrev(iterNode.getPrev());
 				}
@@ -77,10 +77,26 @@ public class DoubleLinkedList<T> {
 	 * 
 	 * 
 	 */
-	public T get(T key) {
-		for (Node<T> iterNode = this.first; iterNode != null; iterNode = iterNode.getNext()) {
-			if (iterNode.getData().equals(key)) {
-				return iterNode.getData();
+	public E get(T key) {
+		for (Node<T, E> iterNode = this.first; iterNode != null; iterNode = iterNode.getNext()) {
+			if (iterNode.getKey().equals(key)) {
+				return iterNode.getValue();
+			}
+
+		}
+		return null;
+	}
+
+	/**
+	 * Updates the value of the key-value pair. O(n)
+	 * 
+	 * 
+	 */
+	public E update(T key, E value) {
+		for (Node<T, E> iterNode = this.first; iterNode != null; iterNode = iterNode.getNext()) {
+			if (iterNode.getKey().equals(key)) {
+				iterNode.setValue(value);
+				return iterNode.getValue();
 			}
 
 		}
@@ -103,7 +119,7 @@ public class DoubleLinkedList<T> {
 	@Override
 	public String toString() {
 		String f = "";
-		for (Node<T> iterNode = this.first; iterNode != null; iterNode = iterNode.getNext()) {
+		for (Node<T, E> iterNode = this.first; iterNode != null; iterNode = iterNode.getNext()) {
 			f = String.join("", f, " node data ", iterNode.toString());
 		}
 		return f;
