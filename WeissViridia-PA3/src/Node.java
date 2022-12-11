@@ -9,18 +9,18 @@
  *        COSI 21A PA1
  */
 
-public class Node<T, E> {
+public class Node {
 
-	private T key;
-	private E value;
-	private Node<T, E> next;
-	private Node<T, E> prev;
+	private GraphNode key;
+	private Integer value;
+	private Node next;
+	private Node prev;
 
 	/**
 	 * Constructs a doubly linked list node that holds a key and value field but
 	 * does not point to any other nodes. O(1)
 	 */
-	public Node(T key, E value) {
+	public Node(GraphNode key, Integer value) {
 		this.key = key;
 		this.value = value;
 	}
@@ -28,28 +28,28 @@ public class Node<T, E> {
 	/**
 	 * Sets the key field of this node. O(1)
 	 */
-	public void setKey(T key) {
+	public void setKey(GraphNode key) {
 		this.key = key;
 	}
 
 	/**
 	 * Sets the value field of this node. O(1)
 	 */
-	public void setValue(E value) {
+	public void setValue(Integer value) {
 		this.value = value;
 	}
 
 	/**
 	 * Sets the next pointer of this node. O(1)
 	 */
-	public void setNext(Node<T, E> next) {
+	public void setNext(Node next) {
 		this.next = next;
 	}
 
 	/**
 	 * Sets the previous pointer of this node. O(1)
 	 */
-	public void setPrev(Node<T, E> prev) {
+	public void setPrev(Node prev) {
 		this.prev = prev;
 	}
 
@@ -57,7 +57,7 @@ public class Node<T, E> {
 	 * @return returns the pointer to the next node or null if one does
 	 *         not exist. O(1)
 	 */
-	public Node<T, E> getNext() {
+	public Node getNext() {
 		return this.next;
 	}
 
@@ -65,21 +65,21 @@ public class Node<T, E> {
 	 * @return returns the pointer to the previous node or null if one does not
 	 *         exist. O(1)
 	 */
-	public Node<T, E> getPrev() {
+	public Node getPrev() {
 		return this.prev;
 	}
 
 	/**
 	 * @return the key stored in this node. O(1)
 	 */
-	public T getKey() {
+	public GraphNode getKey() {
 		return this.key;
 	}
 
 	/**
 	 * @return the value stored in this node. O(1)
 	 */
-	public E getValue() {
+	public Integer getValue() {
 		return this.value;
 	}
 

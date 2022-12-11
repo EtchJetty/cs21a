@@ -1,6 +1,6 @@
 public class HashMap {
 
-    private DoubleLinkedList<GraphNode, Integer>[] hashArray;
+    private DoubleLinkedList[] hashArray;
     private int arrSize;
 
     public int getArrSize() {
@@ -8,9 +8,7 @@ public class HashMap {
     }
 
     public HashMap(int size) {
-        @SuppressWarnings("unchecked")
-        DoubleLinkedList<GraphNode, Integer>[] haA = (DoubleLinkedList<GraphNode, Integer>[]) new DoubleLinkedList[size];
-        this.hashArray = haA;
+        this.hashArray = (DoubleLinkedList[]) new DoubleLinkedList[size];
         this.arrSize = size;
     }
 
@@ -27,11 +25,10 @@ public class HashMap {
         int hashVal = hash(key);
         Integer val = this.hashArray[hashVal].get(key);
         if (val != null) {
-            this.hashArray[hashVal].update(key, val);
+            this.hashArray[hashVal].update(key, value);
         } else {
-            this.hashArray[hashVal].insert(key, val);
+            this.hashArray[hashVal].insert(key, value);
         }
-
     }
 
     private int hash(GraphNode key) {

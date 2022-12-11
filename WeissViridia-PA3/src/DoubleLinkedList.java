@@ -8,10 +8,10 @@
  *        COSI 21A PA1
  */
 
-public class DoubleLinkedList<T, E> {
+public class DoubleLinkedList {
 
 	private int size;
-	private Node<T, E> first;
+	private Node first;
 
 	/**
 	 * initializes a doubly linked list to have 0 elements. O(1)
@@ -23,7 +23,7 @@ public class DoubleLinkedList<T, E> {
 	/**
 	 * gets the first node in the list or null if one does not exist. O(1)
 	 */
-	public Node<T, E> getFirst() {
+	public Node getFirst() {
 		return this.first;
 	}
 
@@ -31,16 +31,16 @@ public class DoubleLinkedList<T, E> {
 	 * adds an element to the end of this list. O(n)
 	 * 
 	 */
-	public void insert(T key, E value) {
+	public void insert(GraphNode key, int value) {
 		if (this.first != null) {
-			Node<T, E> tempNode = this.first;
+			Node tempNode = this.first;
 			while (tempNode.getNext() != null) {
 				tempNode = tempNode.getNext();
 			}
-			tempNode.setNext(new Node<T, E>(key, value));
+			tempNode.setNext(new Node(key, value));
 			tempNode.getNext().setPrev(tempNode);
 		} else {
-			this.first = new Node<T, E>(key, value);
+			this.first = new Node(key, value);
 		}
 		this.size++;
 	}
@@ -50,9 +50,9 @@ public class DoubleLinkedList<T, E> {
 	 * provided key. If the provided key does not exist in the list, return null.
 	 * O(n)
 	 */
-	public T delete(T key) {
+	public GraphNode delete(GraphNode key) {
 
-		for (Node<T, E> iterNode = this.first; iterNode != null; iterNode = iterNode.getNext()) {
+		for (Node iterNode = this.first; iterNode != null; iterNode = iterNode.getNext()) {
 			if (iterNode.getKey() == key) {
 				if (iterNode.getNext() != null) {
 					iterNode.getNext().setPrev(iterNode.getPrev());
@@ -77,8 +77,8 @@ public class DoubleLinkedList<T, E> {
 	 * 
 	 * 
 	 */
-	public E get(T key) {
-		for (Node<T, E> iterNode = this.first; iterNode != null; iterNode = iterNode.getNext()) {
+	public Integer get(GraphNode key) {
+		for (Node iterNode = this.first; iterNode != null; iterNode = iterNode.getNext()) {
 			if (iterNode.getKey().equals(key)) {
 				return iterNode.getValue();
 			}
@@ -92,8 +92,8 @@ public class DoubleLinkedList<T, E> {
 	 * 
 	 * 
 	 */
-	public E update(T key, E value) {
-		for (Node<T, E> iterNode = this.first; iterNode != null; iterNode = iterNode.getNext()) {
+	public Integer update(GraphNode key, int value) {
+		for (Node iterNode = this.first; iterNode != null; iterNode = iterNode.getNext()) {
 			if (iterNode.getKey().equals(key)) {
 				iterNode.setValue(value);
 				return iterNode.getValue();
@@ -119,7 +119,7 @@ public class DoubleLinkedList<T, E> {
 	@Override
 	public String toString() {
 		String f = "";
-		for (Node<T, E> iterNode = this.first; iterNode != null; iterNode = iterNode.getNext()) {
+		for (Node iterNode = this.first; iterNode != null; iterNode = iterNode.getNext()) {
 			f = String.join("", f, " node data ", iterNode.toString());
 		}
 		return f;
