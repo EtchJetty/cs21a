@@ -1,4 +1,3 @@
-import java.math.*;;
 
 public class MinPriorityQueue {
     // static final int HEAP_SIZE = 128;
@@ -68,19 +67,6 @@ public class MinPriorityQueue {
         }
     }
 
-    public GraphNode deleteMin() {
-        int lih = 0;
-        this.heapArray[0] = get(heapSize - 1);
-        while (hasChildren(lih) && isSwappable(lih)) {
-            int sm = smallerChild(lih);
-            GraphNode smallerchild = get(sm);
-            this.heapArray[sm] = this.heapArray[lih];
-            this.heapArray[lih] = smallerchild;
-            lih = sm;
-        }
-        return get(lih);
-    }
-
     public void heapifyDown(int i) {
         int smallest = 0;
         int l = (2 * i);
@@ -102,7 +88,7 @@ public class MinPriorityQueue {
     }
 
     public void heapifyUp(int i) {
-        while (i > 1 && get(i).priority > getParent(i).priority) {
+        while (i > 1 && get(i).priority < getParent(i).priority) {
             GraphNode parentNode = getParent(i);
             this.heapArray[(int) i / 2] = this.heapArray[i];
             this.heapArray[i] = parentNode;
@@ -134,7 +120,17 @@ public class MinPriorityQueue {
      * @return
      */
     public GraphNode pullHighestPriorityElement() {
-        return null;
+        int lih = 0;
+        GraphNode rootNode = this.heapArray[0];
+        this.heapArray[0] = get(heapSize - 1);
+        while (hasChildren(lih) && isSwappable(lih)) {
+            int sm = smallerChild(lih);
+            GraphNode smallerchild = get(sm);
+            this.heapArray[sm] = this.heapArray[lih];
+            this.heapArray[lih] = smallerchild;
+            lih = sm;
+        }
+        return rootNode;
     }
 
     /**
