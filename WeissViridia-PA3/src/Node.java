@@ -11,8 +11,7 @@
 
 public class Node {
 
-	private GraphNode key;
-	private Integer value;
+	private Entry entry;
 	private Node next;
 	private Node prev;
 
@@ -21,22 +20,21 @@ public class Node {
 	 * does not point to any other nodes. O(1)
 	 */
 	public Node(GraphNode key, Integer value) {
-		this.key = key;
-		this.value = value;
+		this.entry = new Entry(key, value);
 	}
 
 	/**
 	 * Sets the key field of this node. O(1)
 	 */
 	public void setKey(GraphNode key) {
-		this.key = key;
+		this.entry.setKey(key);
 	}
 
 	/**
 	 * Sets the value field of this node. O(1)
 	 */
 	public void setValue(Integer value) {
-		this.value = value;
+		this.entry.setValue(value);
 	}
 
 	/**
@@ -73,14 +71,14 @@ public class Node {
 	 * @return the key stored in this node. O(1)
 	 */
 	public GraphNode getKey() {
-		return this.key;
+		return this.entry.getKey();
 	}
 
 	/**
 	 * @return the value stored in this node. O(1)
 	 */
 	public Integer getValue() {
-		return this.value;
+		return this.entry.getValue();
 	}
 
 	/**
@@ -90,6 +88,6 @@ public class Node {
 	 */
 	@Override
 	public String toString() {
-		return String.join("", this.key.toString(), ": ", this.value.toString());
+		return String.join("", this.entry.getKey().toString(), ": ", this.entry.getValue().toString());
 	}
 }

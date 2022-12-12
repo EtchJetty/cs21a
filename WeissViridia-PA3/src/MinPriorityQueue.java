@@ -9,23 +9,28 @@ public class MinPriorityQueue {
     public MinPriorityQueue(int size) {
         this.heapArray = new GraphNode[size];
         this.arrSize = size;
+        this.heapArray[0] = null;
         this.arrLength = 0;
+        this.heapSize = 0;
     }
 
-    public GraphNode getParent(int i) {
-        return this.heapArray[(int) i / 2];
+    private GraphNode getParent(int i) {
+        if (i > 0) {
+            return this.heapArray[((int) i / 2)];
+        }
+        return null;
     }
 
-    public GraphNode get(int i) {
+    private GraphNode get(int i) {
         return this.heapArray[i];
     }
 
-    public GraphNode getLeft(int i) {
-        return this.heapArray[2 * i];
+    private GraphNode getLeft(int i) {
+        return this.heapArray[(2 * (i))];
     }
 
-    public GraphNode getRight(int i) {
-        return this.heapArray[(2 * i) + 1];
+    private GraphNode getRight(int i) {
+        return this.heapArray[((2 * (i)) + 1)];
     }
 
     private boolean hasChildren(int i) {
@@ -62,16 +67,17 @@ public class MinPriorityQueue {
 
     public void buildMinHeap() {
         this.heapSize = arrLength;
-        for (int i = (arrLength / 2); i > 0; i++) {
+        for (int i = (arrLength / 2); i > 0; i--) {
             heapifyDown(i);
         }
     }
 
     public void heapifyDown(int i) {
-        int smallest = 0;
+        int smallest = 1;
         int l = (2 * i);
         int r = ((2 * i) + 1);
-        if (l <= this.heapSize && getLeft(i).priority < getRight(i).priority) {
+
+        if (l <= this.heapSize && getLeft(i).priority < get(i).priority) {
             smallest = l;
         } else {
             smallest = i;
@@ -104,13 +110,16 @@ public class MinPriorityQueue {
      * @param g
      */
     public void insert(GraphNode g) {
+        this.heapSize += 1;
+        this.arrLength = this.heapSize;
         this.heapArray[arrLength] = g;
         int i = arrLength;
-        while (i != 0 && get(i).priority < getParent(i).priority) {
+        while (i != 1 && get(i).priority < getParent(i).priority) {
             GraphNode parentNode = getParent(i);
             this.heapArray[(int) i / 2] = this.heapArray[i];
             this.heapArray[i] = parentNode;
         }
+
     }
 
     /**
@@ -120,9 +129,12 @@ public class MinPriorityQueue {
      * @return
      */
     public GraphNode pullHighestPriorityElement() {
-        int lih = 0;
-        GraphNode rootNode = this.heapArray[0];
-        this.heapArray[0] = get(heapSize - 1);
+        int lih = 1;
+        GraphNode rootNode = this.heapArray[1];
+        this.heapArray[1] = get(heapSize);
+        this.heapArray[heapSize] = null;
+        this.heapSize -= 1;
+        this.arrLength -= 1;
         while (hasChildren(lih) && isSwappable(lih)) {
             int sm = smallerChild(lih);
             GraphNode smallerchild = get(sm);
@@ -144,7 +156,11 @@ public class MinPriorityQueue {
     /**
      * Returns true if the queue is empty.
      */
-    public void isEmpty() {
+    public boolean isEmpty() {
+        if (this.heapSize > 0) {
+            return false;
+        }
+        return true;
     }
 
 }
