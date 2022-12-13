@@ -1,3 +1,14 @@
+
+/**
+ * Main FindMinPath file
+ * Known Bugs: None
+ * 
+ * @author Viridia Weiss
+ * @email gweiss@brandeis.edu
+ *        December 13th, 2022
+ *        COSI 21A PA3
+ */
+
 import java.io.FileWriter;
 import java.io.IOException;
 

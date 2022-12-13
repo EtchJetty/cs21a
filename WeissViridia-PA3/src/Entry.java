@@ -1,3 +1,12 @@
+/**
+ * Entry class
+ * Known Bugs: None
+ * 
+ * @author Viridia Weiss
+ * @email gweiss@brandeis.edu
+ *        December 13th, 2022
+ *        COSI 21A PA3
+ */
 public class Entry {
     private GraphNode key;
 
