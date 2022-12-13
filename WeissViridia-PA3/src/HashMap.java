@@ -46,7 +46,10 @@ public class HashMap {
             bucket.update(key, value);
         } else {
             bucket.insert(key, value);
-            this.numElements += 1;
+            // bandaid fix for recursion issue
+            if (specificHashArray == this.hashArray) {
+                this.numElements += 1;
+            }
             if (loadFactor() >= 0.5) {
                 rehashing();
             }
@@ -80,8 +83,10 @@ public class HashMap {
      * @return
      */
     public boolean hasKey(GraphNode g) {
-        if (this.hashArray[hash(g)].get(g) != null) {
-            return true;
+        if (this.hashArray[hash(g)] != null) {
+            if (this.hashArray[hash(g)].get(g) != null) {
+                return true;
+            }
         }
         return false;
     }

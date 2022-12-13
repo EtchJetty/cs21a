@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch FindMinPath",
+            "request": "launch",
+            "mainClass": "FindMinPath",
+            "projectName": "WeissViridia-PA3_e7e03bd"
+        },
+        {
+            "type": "java",
+            "name": "Launch Tests2",
+            "request": "launch",
+            "mainClass": "Tests2",
+            "projectName": "WeissViridia-PA3_e7e03bd"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
