@@ -75,6 +75,13 @@ public class Node {
 	}
 
 	/**
+	 * @return the entry stored in this node. O(1)
+	 */
+	public Entry getEntry() {
+		return this.entry;
+	}
+
+	/**
 	 * @return the value stored in this node. O(1)
 	 */
 	public Integer getValue() {

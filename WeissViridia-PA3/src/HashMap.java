@@ -2,14 +2,20 @@ public class HashMap {
 
     private DoubleLinkedList[] hashArray;
     private int arrSize;
+    private int numElements;
+
+    public HashMap(int size) {
+        this.hashArray = new DoubleLinkedList[size];
+        this.arrSize = size;
+        this.numElements = 0;
+    }
 
     public int getArrSize() {
         return arrSize;
     }
 
-    public HashMap(int size) {
-        this.hashArray = (DoubleLinkedList[]) new DoubleLinkedList[size];
-        this.arrSize = size;
+    public double loadFactor() {
+        return numElements / arrSize;
     }
 
     /**
@@ -22,13 +28,30 @@ public class HashMap {
      * @param value
      */
     public void set(GraphNode key, int value) {
+        set(key, value, this.hashArray);
+    }
+
+    private void set(GraphNode key, int value, DoubleLinkedList[] specificHashArray) {
         int hashVal = hash(key);
-        Integer val = this.hashArray[hashVal].get(key);
-        if (val != null) {
-            this.hashArray[hashVal].update(key, value);
-        } else {
-            this.hashArray[hashVal].insert(key, value);
+
+        DoubleLinkedList bucket = specificHashArray[hashVal];
+        if (bucket == null) {
+            specificHashArray[hashVal] = new DoubleLinkedList();
+            bucket = specificHashArray[hashVal];
         }
+
+        Integer val = bucket.get(key);
+
+        if (val != null) {
+            bucket.update(key, value);
+        } else {
+            bucket.insert(key, value);
+            this.numElements += 1;
+            if (loadFactor() >= 0.5) {
+                rehashing();
+            }
+        }
+
     }
 
     private int hash(GraphNode key) {
@@ -61,5 +84,22 @@ public class HashMap {
             return true;
         }
         return false;
+    }
+
+    public void rehashing() {
+        DoubleLinkedList[] rehashArray = new DoubleLinkedList[arrSize * 2];
+        this.arrSize *= 2;
+
+        for (int i = 0; i < this.hashArray.length; i++) {
+            if (this.hashArray[i] != null) {
+                while (this.hashArray[i].getFirst() != null) {
+                    Entry entry = this.hashArray[i].getFirst().getEntry();
+                    set(entry.getKey(), entry.getValue(), rehashArray);
+                    this.hashArray[i].delete(entry.getKey());
+                }
+            }
+        }
+
+        this.hashArray = rehashArray;
     }
 }
