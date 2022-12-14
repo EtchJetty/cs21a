@@ -1,5 +1,5 @@
 /**
- * Entry class
+ * Entry class with a key and value
  * Known Bugs: None
  * 
  * @author Viridia Weiss
@@ -9,28 +9,44 @@
  */
 public class Entry {
     private GraphNode key;
+    private Integer value;
 
+    /**
+     * Getter for entry key.
+     */
     public GraphNode getKey() {
         return key;
     }
 
+    /**
+     * Setter for entry key.
+     * 
+     * @param key
+     */
     public void setKey(GraphNode key) {
         this.key = key;
     }
 
-    private Integer value;
-
+    /**
+     * Getter for the value of the entry.
+     * 
+     * 
+     */
     public Integer getValue() {
         return value;
     }
 
+    /**
+     * Setter for the value of the entry.
+     * 
+     * @param value
+     */
     public void setValue(Integer value) {
         this.value = value;
     }
 
     /**
-     * Constructs a doubly linked list node that holds a key and value field but
-     * does not point to any other nodes. O(1)
+     * Constructs an entry that holds a key and value field
      */
     public Entry(GraphNode key, Integer value) {
         this.key = key;

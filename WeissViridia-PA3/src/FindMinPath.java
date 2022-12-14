@@ -15,10 +15,15 @@ import java.io.IOException;
 public class FindMinPath {
     static final int QUEUE_SIZE = 1024;
 
+    /**
+     * Main FindMinPath class.
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
         MinPriorityQueue q = new MinPriorityQueue(QUEUE_SIZE);
 
-        GraphWrapper gw = new GraphWrapper(true);
+        GraphWrapper gw = new GraphWrapper();
         GraphNode home = gw.getHome();
         home.priority = 0;
         q.insert(home);

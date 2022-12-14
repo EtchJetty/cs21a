@@ -13,15 +13,24 @@ public class MinPriorityQueue {
     private int heapSize;
     protected HashMap indexMap;
 
+    /**
+     * Generates an empty MinPriorityQueue.
+     * 
+     * @param size
+     */
     public MinPriorityQueue(int size) {
         this.heapArray = new GraphNode[size];
-        // this.arrSize = size;
         this.heapArray[0] = null;
-        // this.arrLength = 0;
         this.heapSize = 0;
         this.indexMap = new HashMap(size);
     }
 
+    /**
+     * Gets parent of the node at i.
+     * 
+     * @param i
+     * @return
+     */
     private GraphNode getParent(int i) {
         if (i > 0) {
             return this.heapArray[((int) i / 2)];
@@ -29,18 +38,42 @@ public class MinPriorityQueue {
         return null;
     }
 
+    /**
+     * Gets the node at i.
+     * 
+     * @param i
+     * @return
+     */
     private GraphNode get(int i) {
         return this.heapArray[i];
     }
 
+    /**
+     * Gets the left node of the node at i.
+     * 
+     * @param i
+     * @return
+     */
     private GraphNode getLeft(int i) {
         return this.heapArray[(2 * (i))];
     }
 
+    /**
+     * Gets the right node of the node at i.
+     * 
+     * @param i
+     * @return
+     */
     private GraphNode getRight(int i) {
         return this.heapArray[((2 * (i)) + 1)];
     }
 
+    /**
+     * Tests if node at i has at least one child.
+     * 
+     * @param i
+     * @return
+     */
     private boolean hasChildren(int i) {
         if (getLeft(i) != null || getRight(i) != null) {
             return true;
@@ -48,6 +81,12 @@ public class MinPriorityQueue {
         return false;
     }
 
+    /**
+     * Tests if either of the node at i's children can swap with i.
+     * 
+     * @param i
+     * @return
+     */
     private boolean isSwappable(int i) {
         if (getLeft(i) != null && getLeft(i).priority < get(i).priority) {
             return true;
@@ -57,6 +96,12 @@ public class MinPriorityQueue {
         return false;
     }
 
+    /**
+     * Returns the smaller child of i.
+     * 
+     * @param i
+     * @return
+     */
     private int smallerChild(int i) {
         if (getLeft(i) != null && getRight(i) == null) {
             return 2 * i;
@@ -73,16 +118,30 @@ public class MinPriorityQueue {
         return -1;
     }
 
+    /**
+     * Builds a heap from the root down.
+     * 
+     */
     public void buildMinHeap() {
         buildMinHeap(1);
     }
 
+    /**
+     * Builds a heap from i down.
+     * 
+     * @param x
+     */
     public void buildMinHeap(int x) {
         for (int i = (this.heapSize / 2); i > (x - 1); i--) {
             heapifyDown(i);
         }
     }
 
+    /**
+     * HeapifyDown.
+     * 
+     * @param i
+     */
     public void heapifyDown(int i) {
         int smallest = 1;
         int l = (2 * i);
@@ -102,6 +161,11 @@ public class MinPriorityQueue {
         }
     }
 
+    /**
+     * HeapifyUp.
+     * 
+     * @param i
+     */
     public void heapifyUp(int i) {
         while (i > 1 && get(i).priority < getParent(i).priority) {
             swapParent(i);
@@ -123,12 +187,30 @@ public class MinPriorityQueue {
         }
         this.indexMap.set(get(i), i);
 
+        // if (this.heapArray.length < (this.heapSize + 1)) {
+        //     GraphNode[] newArr = new GraphNode[(this.heapArray.length + 1) * 4];
+        //     for (int j = 0; j < this.heapArray.length; j++) {
+        //         newArr[j] = this.heapArray[j];
+        //     }
+        //     this.heapArray = newArr;
+        // }
     }
 
+    /**
+     * Swaps item with its parent.
+     * 
+     * @param i
+     */
     private void swapParent(int i) {
         swapWith(i, i / 2);
     };
 
+    /**
+     * Swaps the nodes at i and b.
+     * 
+     * @param i
+     * @param b
+     */
     private void swapWith(int i, int b) {
         GraphNode bNode = get(b);
 

@@ -13,23 +13,36 @@ public class HashMap {
     private int arrSize;
     private int numElements;
 
+    /**
+     * Generates empty HashMap with DLL buckets
+     * 
+     * @param size starting size
+     */
     public HashMap(int size) {
         this.hashArray = new DoubleLinkedList[size];
         this.arrSize = size;
         this.numElements = 0;
     }
 
+    /**
+     * Array size getter.
+     * 
+     * @return
+     */
     public int getArrSize() {
         return arrSize;
     }
 
+    /**
+     * @return numElements / arrSize
+     */
     public double loadFactor() {
         return numElements / arrSize;
     }
 
     /**
      * - check the hashmap to see if there is an Entry for the
-     * GraphNode “key”, if there is, change its value to “value”, otherwise, add it
+     * GraphNode "key", if there is, change its value to "value", otherwise, add it
      * to the
      * hashmap with that value.
      * 
@@ -40,6 +53,16 @@ public class HashMap {
         set(key, value, this.hashArray);
     }
 
+    /**
+     * - check the hashmap to see if there is an Entry for the
+     * GraphNode "key", if there is, change its value to "value", otherwise, add it
+     * to the
+     * hashmap with that value.
+     * 
+     * @param key
+     * @param value
+     * @param specificHashArray
+     */
     private void set(GraphNode key, int value, DoubleLinkedList[] specificHashArray) {
         int hashVal = hash(key);
 
@@ -66,6 +89,12 @@ public class HashMap {
 
     }
 
+    /**
+     * Hash function. Adds the ASCII values of the ID % arrSize.
+     * 
+     * @param key
+     * @return
+     */
     private int hash(GraphNode key) {
         int hashNum = 0;
         for (int i = 0; i < key.getId().length(); i++) {
@@ -100,6 +129,9 @@ public class HashMap {
         return false;
     }
 
+    /**
+     * Rehash function. Doubles the size of the hasharray.
+     */
     public void rehashing() {
         DoubleLinkedList[] rehashArray = new DoubleLinkedList[arrSize * 2];
         this.arrSize *= 2;
